@@ -6,6 +6,7 @@ const logger = require("./config/logger");
 
 const locationsRoutes = require("./routes/locations");
 const toursRoutes = require("./routes/tours");
+const commentsRoutes = require("./routes/comments");
 
 const app = express();
 
@@ -22,9 +23,7 @@ app.use((req, res, next) => {
 // Routes
 app.use("/api/locations", locationsRoutes);
 app.use("/api/tours", toursRoutes);
-
-
-
+app.use("/api/comments", commentsRoutes);
 
 // Error handling
 app.use((req, res) => {
