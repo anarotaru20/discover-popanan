@@ -4,6 +4,9 @@ const helmet = require("helmet");
 
 const logger = require("./config/logger");
 
+const locationsRoutes = require("./routes/locations");
+const toursRoutes = require("./routes/tours");
+
 const app = express();
 
 app.use(helmet());
@@ -17,7 +20,13 @@ app.use((req, res, next) => {
 });
 
 // Routes
+app.use("/api/locations", locationsRoutes);
+app.use("/api/tours", toursRoutes);
 
+
+
+
+// Error handling
 app.use((req, res) => {
   logger.warn(`Route not found: ${req.method} ${req.originalUrl}`);
   res.status(404).json({ message: "Route not found" });
