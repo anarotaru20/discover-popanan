@@ -1,0 +1,291 @@
+[
+  {
+    "id": 1,
+    "slug": "biserica-popa-nan",
+    "title": "Biserica Popa Nan (Sfântul Gheorghe)",
+    "type": "lacas-cult",
+    "categoryLabel": "Lăcaș de cult",
+    "address": "Str. Popa Nan nr. 47B",
+    "period": "1719 / 1910–1918",
+    "lat": null,
+    "lng": null,
+    "shortDescription": "Biserică neoromânească impunătoare, considerată punctul central al zonei Popa Nan.",
+    "fullDescription": "Biserica Popa Nan este unul dintre reperele importante ale străzii, atât prin vechimea locului, cât și prin rolul său în identitatea cartierului. Actuala construcție, ridicată între 1910 și 1918, are un stil neoromânesc cu influențe bizantine și păstrează memoria primei biserici ridicate aici în anul 1719 de preotul Popa Nan. De-a lungul timpului, biserica a rămas un reper spiritual și urban, supraviețuind transformărilor orașului și planurilor de sistematizare din perioada comunistă.",
+    "coverImage": "/images/locations/biserica-popa-nan/cover.jpg",
+    "beforeImage": "/images/locations/biserica-popa-nan/before.jpg",
+    "afterImage": "/images/locations/biserica-popa-nan/after.jpg",
+    "gallery": [
+      "/images/locations/biserica-popa-nan/1.jpg",
+      "/images/locations/biserica-popa-nan/2.jpg",
+      "/images/locations/biserica-popa-nan/3.jpg"
+    ],
+    "audio": "/audio/biserica-popa-nan.mp3",
+    "timeline": [
+      {
+        "year": "1719",
+        "title": "Prima biserică de lemn",
+        "description": "Este ridicată prima biserică de lemn de către Popa Nan, părintele Ioan."
+      },
+      {
+        "year": "1845",
+        "title": "Biserica de zid",
+        "description": "Se ridică o biserică de zid, distrusă ulterior în urma Marelui Foc."
+      },
+      {
+        "year": "1910",
+        "title": "Începe construcția actuală",
+        "description": "Începe ridicarea clădirii actuale a bisericii."
+      },
+      {
+        "year": "1918",
+        "title": "Sfințirea bisericii",
+        "description": "Biserica este sfințită după Primul Război Mondial."
+      }
+    ],
+    "facts": [
+      "Numele străzii și al cartierului provine de la preotul Popa Nan.",
+      "„Nan” este considerat o prescurtare de la Ioan.",
+      "Biserica a rămas unul dintre reperele centrale ale zonei."
+    ],
+    "sources": [
+      {
+        "title": "Arhiva Parohiei Popa Nan",
+        "type": "arhivă",
+        "url": null
+      },
+      {
+        "title": "Registrul Monumentelor Istorice",
+        "type": "registru",
+        "url": null
+      }
+    ],
+    "tourIds": [
+      "popa-nan-interbelic",
+      "memoria-strazii"
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "casa-popa-nan-32",
+    "title": "Casa de la nr. 32",
+    "type": "resedinta-istorica",
+    "categoryLabel": "Reședință istorică",
+    "address": "Str. Popa Nan nr. 32",
+    "period": "Sfârșitul secolului XIX - începutul secolului XX",
+    "lat": null,
+    "lng": null,
+    "shortDescription": "Casă bucureșteană veche, reprezentativă pentru arhitectura civilă a zonei.",
+    "fullDescription": "Casa de la nr. 32 păstrează imaginea Bucureștiului de sfârșit de secol XIX și început de secol XX. Prin proporțiile sale, ferestrele înalte și detaliile decorative de pe fațadă, clădirea reflectă gustul clasei medii înstărite din perioada respectivă. Este un exemplu de arhitectură civilă care ajută la reconstituirea atmosferei străzii Popa Nan înainte de transformările urbane moderne.",
+    "coverImage": "/images/locations/casa-popa-nan-32/cover.jpg",
+    "beforeImage": "/images/locations/casa-popa-nan-32/before.jpg",
+    "afterImage": "/images/locations/casa-popa-nan-32/after.jpg",
+    "gallery": [
+      "/images/locations/casa-popa-nan-32/1.jpg",
+      "/images/locations/casa-popa-nan-32/2.jpg"
+    ],
+    "audio": "/audio/casa-popa-nan-32.mp3",
+    "timeline": [
+      {
+        "year": "1900",
+        "title": "Locuință urbană",
+        "description": "Casa funcționează ca locuință familială, păstrând tipologia caselor bucureștene vechi."
+      },
+      {
+        "year": "Prezent",
+        "title": "Martor arhitectural",
+        "description": "Clădirea continuă să păstreze volumetria și atmosfera vechii străzi."
+      }
+    ],
+    "facts": [
+      "Reflectă stilul caselor de tip vagon evoluat.",
+      "Este reprezentativă pentru lotizările vechi ale zonei.",
+      "Păstrează detalii decorative eclectice."
+    ],
+    "sources": [
+      {
+        "title": "Planurile cadastrale istorice ale Bucureștiului",
+        "type": "hartă / cadastru",
+        "url": null
+      }
+    ],
+    "tourIds": [
+      "memoria-strazii",
+      "popa-nan-interbelic"
+    ]
+  },
+  {
+    "id": 3,
+    "slug": "fabrica-de-matase-popa-nan",
+    "title": "Fabrica de Mătase",
+    "type": "patrimoniu-industrial",
+    "categoryLabel": "Patrimoniu industrial",
+    "address": "Str. Popa Nan nr. 82",
+    "period": "Prima jumătate a secolului XX",
+    "lat": null,
+    "lng": null,
+    "shortDescription": "Fost spațiu industrial textil, reconvertit în zonă creativă și culturală.",
+    "fullDescription": "Fabrica de Mătase de pe Popa Nan este unul dintre reperele industriale ale zonei. Complexul, format din hale înalte și structuri masive, amintește de perioada în care Bucureștiul avea o puternică activitate manufacturieră și industrială. După declinul producției textile, spațiul a trecut printr-un proces de reconversie, devenind un loc asociat cu ateliere, studiouri foto, birouri și evenimente creative.",
+    "coverImage": "/images/locations/fabrica-de-matase/cover.jpg",
+    "beforeImage": "/images/locations/fabrica-de-matase/before.jpg",
+    "afterImage": "/images/locations/fabrica-de-matase/after.jpg",
+    "gallery": [
+      "/images/locations/fabrica-de-matase/1.jpg",
+      "/images/locations/fabrica-de-matase/2.jpg",
+      "/images/locations/fabrica-de-matase/3.jpg"
+    ],
+    "audio": "/audio/fabrica-de-matase.mp3",
+    "timeline": [
+      {
+        "year": "Interbelic",
+        "title": "Unitate de producție textilă",
+        "description": "Funcționează ca spațiu industrial dedicat producției textile."
+      },
+      {
+        "year": "Post-1990",
+        "title": "Declin industrial",
+        "description": "După schimbările economice, activitatea industrială intră în declin."
+      },
+      {
+        "year": "Prezent",
+        "title": "Reconversie creativă",
+        "description": "Spațiul este folosit pentru birouri, ateliere, studiouri și evenimente."
+      }
+    ],
+    "facts": [
+      "Este un exemplu de reconversie a patrimoniului industrial.",
+      "Spațiile industriale au fost recuperate prin activități creative.",
+      "Fabrica arată cum vechea industrie poate primi o funcție contemporană."
+    ],
+    "sources": [
+      {
+        "title": "Arhivele industriale ale Municipiului București",
+        "type": "arhivă",
+        "url": null
+      }
+    ],
+    "tourIds": [
+      "fabrici-si-mahalale",
+      "memoria-strazii"
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "casa-gheorghe-braescu",
+    "title": "Casa Scriitorului Gheorghe Brăescu",
+    "type": "casa-memoriala",
+    "categoryLabel": "Casă memorială",
+    "address": "Str. Popa Nan nr. 16, intersecția cu Str. Mecet",
+    "period": "Prima jumătate a secolului XX",
+    "lat": null,
+    "lng": null,
+    "shortDescription": "Casă asociată cu scriitorul Gheorghe Brăescu și atmosfera literară a Bucureștiului vechi.",
+    "fullDescription": "Casa asociată cu Gheorghe Brăescu păstrează memoria unei perioade în care strada Popa Nan era legată nu doar de viața de cartier, ci și de lumea culturală a Bucureștiului. Clădirea, elegantă și discretă, amintește de atmosfera liniștită a vechiului oraș. Gheorghe Brăescu, scriitor și fost ofițer, este cunoscut pentru schițele sale umoristice, multe dintre ele inspirate de mediul cazon.",
+    "coverImage": "/images/locations/casa-gheorghe-braescu/cover.jpg",
+    "beforeImage": "/images/locations/casa-gheorghe-braescu/before.jpg",
+    "afterImage": "/images/locations/casa-gheorghe-braescu/after.jpg",
+    "gallery": [
+      "/images/locations/casa-gheorghe-braescu/1.jpg",
+      "/images/locations/casa-gheorghe-braescu/2.jpg"
+    ],
+    "audio": "/audio/casa-gheorghe-braescu.mp3",
+    "timeline": [
+      {
+        "year": "Interbelic",
+        "title": "Locuință și spațiu de creație",
+        "description": "Scriitorul locuiește și creează aici unele dintre textele sale cunoscute."
+      },
+      {
+        "year": "1949",
+        "title": "Moartea scriitorului",
+        "description": "Gheorghe Brăescu moare la București, iar casa rămâne asociată cu memoria sa culturală."
+      }
+    ],
+    "facts": [
+      "Gheorghe Brăescu a fost ofițer de carieră, general de brigadă.",
+      "Umorul său s-a îndreptat adesea către mediul militar.",
+      "După ce și-a pierdut brațul drept în Primul Război Mondial, a învățat să scrie cu mâna stângă."
+    ],
+    "sources": [
+      {
+        "title": "Uniunea Scriitorilor din România",
+        "type": "instituție",
+        "url": null
+      },
+      {
+        "title": "Istoria Literaturii Române - G. Călinescu",
+        "type": "lucrare critică",
+        "url": null
+      },
+      {
+        "title": "Plăcuța memorială de pe imobil",
+        "type": "observație de teren",
+        "url": null
+      }
+    ],
+    "tourIds": [
+      "popa-nan-interbelic",
+      "memoria-strazii"
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "electrecord-popa-nan",
+    "title": "Fabrica de Discuri Electrecord",
+    "type": "patrimoniu-industrial",
+    "categoryLabel": "Istoria muzicii",
+    "address": "Str. Popa Nan nr. 21",
+    "period": "Înființată în 1932",
+    "lat": null,
+    "lng": null,
+    "shortDescription": "Fost sediu al celei mai importante case de discuri din România comunistă.",
+    "fullDescription": "Fabrica de Discuri Electrecord este unul dintre cele mai importante repere culturale și industriale ale străzii Popa Nan. Clădirea a fost asociată cu istoria muzicii românești, fiind locul unde au fost imprimate numeroase discuri care au circulat în casele românilor în perioada comunistă. Deși arhitectura este mai degrabă utilitară, importanța culturală a locului este majoră.",
+    "coverImage": "/images/locations/electrecord/cover.jpg",
+    "beforeImage": "/images/locations/electrecord/before.jpg",
+    "afterImage": "/images/locations/electrecord/after.jpg",
+    "gallery": [
+      "/images/locations/electrecord/1.jpg",
+      "/images/locations/electrecord/2.jpg",
+      "/images/locations/electrecord/3.jpg"
+    ],
+    "audio": "/audio/electrecord.mp3",
+    "timeline": [
+      {
+        "year": "1932",
+        "title": "Înființarea fabricii",
+        "description": "Nathan Mischonzniki pune bazele fabricii sub numele de Lifa."
+      },
+      {
+        "year": "1948",
+        "title": "Naționalizarea",
+        "description": "Fabrica este naționalizată și transformată în Electrecord."
+      },
+      {
+        "year": "Anii '70-'80",
+        "title": "Apogeul vinilurilor",
+        "description": "Electrecord atinge perioada de maximă producție și vizibilitate culturală."
+      }
+    ],
+    "facts": [
+      "Electrecord a fost singura casă de discuri din România comunistă.",
+      "Aici au fost imprimate discuri ale unor artiști importanți, de la Maria Tănase la Phoenix.",
+      "Locul leagă strada Popa Nan de istoria muzicii românești."
+    ],
+    "sources": [
+      {
+        "title": "Arhiva Electrecord",
+        "type": "arhivă",
+        "url": null
+      },
+      {
+        "title": "Istoria Industriei Fonografice din România",
+        "type": "lucrare / documentare",
+        "url": null
+      }
+    ],
+    "tourIds": [
+      "urmele-comunismului",
+      "fabrici-si-mahalale",
+      "memoria-strazii"
+    ]
+  }
+]

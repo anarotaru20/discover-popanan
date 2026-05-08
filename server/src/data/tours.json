@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "slug": "memoria-strazii",
+    "title": "Memoria Străzii Popa Nan",
+    "theme": "general",
+    "duration": "35 min",
+    "distance": "1.8 km",
+    "difficulty": "ușor",
+    "shortDescription": "Un traseu introductiv prin cele mai importante repere istorice și culturale ale străzii Popa Nan.",
+    "description": "Acest tur este gândit ca o primă întâlnire cu strada Popa Nan. Traseul leagă biserica, reședințele istorice, spațiile industriale și memoria culturală a zonei într-o experiență scurtă, ușor de parcurs pe jos.",
+    "coverImage": "/images/tours/memoria-strazii.jpg",
+    "audioIntro": "/audio/tours/memoria-strazii-intro.mp3",
+    "color": "#FF8A00",
+    "stops": [
+      "biserica-popa-nan",
+      "casa-popa-nan-32",
+      "casa-gheorghe-braescu",
+      "electrecord-popa-nan",
+      "fabrica-de-matase-popa-nan"
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "popa-nan-interbelic",
+    "title": "Popa Nan Interbelic",
+    "theme": "interbelic",
+    "duration": "25 min",
+    "distance": "1.2 km",
+    "difficulty": "ușor",
+    "shortDescription": "O plimbare prin atmosfera Bucureștiului interbelic, cu locuințe vechi, cultură urbană și povești literare.",
+    "description": "Turul urmărește urmele perioadei interbelice de pe strada Popa Nan: case vechi, detalii arhitecturale și locuri asociate cu viața culturală a orașului. Este o rută potrivită pentru cei interesați de Bucureștiul discret, elegant și încă vizibil printre clădirile actuale.",
+    "coverImage": "/images/tours/popa-nan-interbelic.jpg",
+    "audioIntro": "/audio/tours/popa-nan-interbelic-intro.mp3",
+    "color": "#D97706",
+    "stops": [
+      "biserica-popa-nan",
+      "casa-popa-nan-32",
+      "casa-gheorghe-braescu"
+    ]
+  },
+  {
+    "id": 3,
+    "slug": "fabrici-si-mahalale",
+    "title": "Fabrici și Mahalale Dispărute",
+    "theme": "industrial",
+    "duration": "30 min",
+    "distance": "1.5 km",
+    "difficulty": "ușor",
+    "shortDescription": "Un traseu despre trecutul industrial al zonei și transformarea spațiilor de producție în locuri creative.",
+    "description": "Acest tur pornește de la memoria industrială a străzii Popa Nan și arată cum fabricile, atelierele și spațiile utilitare au modelat viața cartierului. Traseul pune accent pe transformarea locurilor: de la producție și muncă, la cultură, muzică și reconversie creativă.",
+    "coverImage": "/images/tours/fabrici-si-mahalale.jpg",
+    "audioIntro": "/audio/tours/fabrici-si-mahalale-intro.mp3",
+    "color": "#EA580C",
+    "stops": [
+      "electrecord-popa-nan",
+      "fabrica-de-matase-popa-nan"
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "urmele-comunismului",
+    "title": "Urmele Comunismului",
+    "theme": "comunism",
+    "duration": "20 min",
+    "distance": "1 km",
+    "difficulty": "ușor",
+    "shortDescription": "Un traseu despre industrie, sistematizare, muzică și supraviețuirea reperelor locale în perioada comunistă.",
+    "description": "Turul urmărește felul în care perioada comunistă a schimbat strada Popa Nan: naționalizări, industrie, producție culturală controlată și transformări urbane. În centru se află locuri care au supraviețuit sau au primit funcții noi în această perioadă.",
+    "coverImage": "/images/tours/urmele-comunismului.jpg",
+    "audioIntro": "/audio/tours/urmele-comunismului-intro.mp3",
+    "color": "#F97316",
+    "stops": [
+      "biserica-popa-nan",
+      "electrecord-popa-nan",
+      "fabrica-de-matase-popa-nan"
+    ]
+  }
+]
