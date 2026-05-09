@@ -2,10 +2,10 @@ import api from './api'
 
 export const locationsService = {
   getAllLocations() {
-    return api.get('/locations')
+    return api.get('/api/locations')
   },
 
   getLocationBySlug(slug) {
-    return api.get(`/locations/${slug}`)
+    return api.get(`/api/locations/${slug}`)
   }
 }
