@@ -8,9 +8,7 @@ const blockedWords = require("../config/blockedWords");
 function hasBlockedContent(text) {
   const normalized = String(text || "").toLowerCase();
 
-  return blockedWords.some((word) =>
-    normalized.includes(word)
-  );
+  return blockedWords.some((word) => normalized.includes(word));
 }
 
 function normalizeText(value) {
@@ -61,6 +59,7 @@ async function addContribution(req, res, next) {
       "corectie",
       "sursa noua",
       "fotografie veche",
+      "mesaj pentru viitor",
     ];
 
     if (!allowedTypes.includes(type)) {
