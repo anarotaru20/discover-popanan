@@ -20,7 +20,7 @@
       </button>
     </div>
 
-    <v-dialog v-model="dialog" max-width="980">
+    <v-dialog v-model="dialog" :fullscreen="$vuetify.display.smAndDown" max-width="980">
       <v-card class="dialog-card" rounded="xl">
         <v-card-title class="dialog-title">
           <span>Imagine galerie</span>
@@ -30,17 +30,22 @@
           </v-btn>
         </v-card-title>
 
-        <v-card-text>
-          <img
-            v-if="currentImage"
-            :src="currentImage"
-            alt="Imagine galerie mărită"
-            class="dialog-image"
-          />
+        <v-card-text class="dialog-content">
+          <div class="dialog-image-wrapper">
+            <img
+              v-if="currentImage"
+              :src="currentImage"
+              alt="Imagine galerie mărită"
+              class="dialog-image"
+            />
+          </div>
+
           <div class="dialog-navigation">
             <v-btn icon variant="outlined" @click="prevImage">
               <v-icon>mdi-chevron-left</v-icon>
             </v-btn>
+
+            <span class="dialog-counter"> {{ selectedIndex + 1 }} / {{ images.length }} </span>
 
             <v-btn icon variant="outlined" @click="nextImage">
               <v-icon>mdi-chevron-right</v-icon>
@@ -181,36 +186,83 @@ const prevImage = () => {
   background: rgba(24, 24, 24, 0.98);
   border: 1px solid rgba(255, 138, 0, 0.18);
   color: #f5f5f5;
+  overflow: hidden;
 }
 
 .dialog-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 18px 22px;
+}
+
+.dialog-content {
+  padding: 0 22px 22px;
+}
+
+.dialog-image-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dialog-image {
   width: 100%;
-  max-height: 75vh;
+  max-height: 72vh;
   object-fit: contain;
   border-radius: 18px;
   display: block;
   background: #111;
 }
 
+.dialog-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.dialog-counter {
+  min-width: 56px;
+  text-align: center;
+  color: rgba(245, 245, 245, 0.72);
+  font-weight: 600;
+}
+
 @media (max-width: 700px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
+  .dialog-card {
+    height: 100dvh;
+    border-radius: 0 !important;
   }
 
-  .gallery-item {
-    height: 240px;
+  .dialog-title {
+    padding: 14px 16px;
+    font-size: 1rem;
   }
-  
-  .gallery-item {
-    min-width: 260px;
-    flex-basis: 260px;
-    height: 240px;
+
+  .dialog-content {
+    height: calc(100dvh - 64px);
+    padding: 0 14px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .dialog-image-wrapper {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .dialog-image {
+    max-height: calc(100dvh - 160px);
+    border-radius: 14px;
+  }
+
+  .dialog-navigation {
+    margin-top: 16px;
+    padding-bottom: max(6px, env(safe-area-inset-bottom));
   }
 }
 </style>

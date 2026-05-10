@@ -10,15 +10,15 @@
         {{ locationsStore.error }}
       </v-alert>
 
-      <v-btn color="orange" class="mt-4" to="/">
-        Înapoi la pagina principală
-      </v-btn>
+      <v-btn color="orange" class="mt-4" to="/"> Înapoi la pagina principală </v-btn>
     </section>
 
     <template v-else-if="location">
       <section
         class="hero-section"
-        :style="{ backgroundImage: `linear-gradient(rgba(15, 15, 15, 0.35), rgba(15, 15, 15, 0.95)), url(${location.hero_image || location.image_url || fallbackImage})` }"
+        :style="{
+          backgroundImage: `linear-gradient(rgba(15, 15, 15, 0.35), rgba(15, 15, 15, 0.95)), url(${location.coverImage || fallbackImage})`,
+        }"
       >
         <div class="hero-content">
           <v-chip class="period-chip" color="orange" variant="flat">
@@ -28,13 +28,13 @@
           <h1>{{ location.title }}</h1>
 
           <p>
-            {{ location.short_description || 'Descoperă povestea acestui loc de pe strada Popa Nan.' }}
+            {{
+              location.shortDescription || 'Descoperă povestea acestui loc de pe strada Popa Nan.'
+            }}
           </p>
 
           <div class="hero-actions">
-            <v-btn color="orange" size="large" rounded="xl" to="/tours">
-              Începe turul
-            </v-btn>
+            <v-btn color="orange" size="large" rounded="xl" to="/tours"> Începe turul </v-btn>
 
             <v-btn variant="outlined" color="white" size="large" rounded="xl" to="/map">
               Vezi pe hartă
@@ -49,7 +49,7 @@
           <h2>Istoria din spatele locului</h2>
 
           <p class="story-text">
-            {{ location.full_description || location.description || 'Povestea completă va fi adăugată în curând.' }}
+            {{ location.fullDescription || 'Povestea completă va fi adăugată în curând.' }}
           </p>
         </section>
 
@@ -58,13 +58,9 @@
           <h2>Momente importante</h2>
 
           <div class="timeline-list">
-            <div
-              v-for="item in timelineItems"
-              :key="item.id || item.year || item.title"
-              class="timeline-item"
-            >
+            <div v-for="item in timelineItems" :key="item.year + item.title" class="timeline-item">
               <div class="timeline-year">
-                {{ item.year || item.date }}
+                {{ item.year }}
               </div>
 
               <div class="timeline-content">
@@ -75,65 +71,61 @@
           </div>
         </section>
 
-        <Gallery
-          v-if="galleryImages.length"
-          :images="galleryImages"
-        />
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.840373547727!2d26.122552276563244!3d44.4364365014224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff2ede01ee37%3A0x26ade6c613c319f6!2sBiserica%20Popa%20Nan!5e0!3m2!1sro!2sro!4v1778408658297!5m2!1sro!2sro"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
 
-        <Audio
-          v-if="location.audio_url"
-          :audio-url="location.audio_url"
+        <BeforeAfter
+          v-if="location.beforeImage && location.afterImage"
+          :before-image="location.beforeImage"
+          :after-image="location.afterImage"
           :title="location.title"
         />
+
+        <Gallery v-if="galleryImages.length" :images="galleryImages" />
+
+        <Audio v-if="location.audio" :audio-url="location.audio" :title="location.title" />
 
         <section v-if="facts.length" class="facts-section">
           <p class="eyebrow">Știai că?</p>
           <h2>Detalii interesante</h2>
 
           <div class="facts-grid">
-            <v-card
-              v-for="fact in facts"
-              :key="fact.id || fact.title || fact"
-              class="fact-card"
-              rounded="xl"
-            >
+            <v-card v-for="fact in facts" :key="fact" class="fact-card" rounded="xl">
               <v-card-text>
-                <v-icon color="orange" size="28" class="mb-3">
-                  mdi-lightbulb-on-outline
-                </v-icon>
+                <v-icon color="orange" size="28" class="mb-3"> mdi-lightbulb-on-outline </v-icon>
 
-                <p>
-                  {{ typeof fact === 'string' ? fact : fact.text || fact.description }}
-                </p>
+                <p>{{ fact }}</p>
               </v-card-text>
             </v-card>
           </div>
         </section>
+
+        <MiniMap
+          v-if="location.lat && location.lng"
+          :lat="location.lat"
+          :lng="location.lng"
+          :title="location.title"
+          :address="location.address"
+        />
 
         <section v-if="sources.length" class="sources-section">
           <p class="eyebrow">Surse</p>
           <h2>Documentare și referințe</h2>
 
           <div class="sources-list">
-            <v-card
-              v-for="source in sources"
-              :key="source.id || source.title || source.url"
-              class="source-card"
-              rounded="xl"
-            >
+            <v-card v-for="source in sources" :key="source.title" class="source-card" rounded="xl">
               <v-card-text>
-                <strong>{{ source.title || source.name || 'Sursă istorică' }}</strong>
+                <strong>{{ source.title }}</strong>
+                <p>{{ source.type }}</p>
 
-                <p v-if="source.description">
-                  {{ source.description }}
-                </p>
-
-                <a
-                  v-if="source.url"
-                  :href="source.url"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a v-if="source.url" :href="source.url" target="_blank" rel="noopener noreferrer">
                   Vezi sursa
                 </a>
               </v-card-text>
@@ -141,21 +133,16 @@
           </div>
         </section>
 
-        <Comments
-          v-if="location.id"
-          :location-id="location.id"
-        />
+        <Contributions v-if="location?.id" :location-id="location.id" />
+
+        <Comments v-if="location?.id" :location-id="location.id" />
       </v-container>
     </template>
 
     <section v-else class="state-section">
-      <v-alert type="warning" variant="tonal" max-width="720">
-        Locația nu a fost găsită.
-      </v-alert>
+      <v-alert type="warning" variant="tonal" max-width="720"> Locația nu a fost găsită. </v-alert>
 
-      <v-btn color="orange" class="mt-4" to="/">
-        Înapoi la pagina principală
-      </v-btn>
+      <v-btn color="orange" class="mt-4" to="/"> Înapoi la pagina principală </v-btn>
     </section>
   </main>
 </template>
@@ -165,28 +152,31 @@ import { computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useLocationsStore } from '@/stores/locations'
 import Comments from '@/components/location/Comments.vue'
+import Contributions from '@/components/location/Contributions.vue'
 import Gallery from '@/components/location/Gallery.vue'
 import Audio from '@/components/location/Audio.vue'
+import BeforeAfter from '@/components/location/BeforeAfter.vue'
+import MiniMap from '@/components/location/MiniMap.vue'
 
 const route = useRoute()
 const locationsStore = useLocationsStore()
 
 const fallbackImage = '/images/popanani-hero.jpg'
 
-const location = computed(() => locationsStore.selectedLocation)
+const location = computed(() => {
+  return locationsStore.selectedLocation?.data || locationsStore.selectedLocation
+})
 
 const timelineItems = computed(() => {
   return location.value?.timeline || []
 })
 
 const galleryImages = computed(() => {
-  if (location.value?.gallery?.length) return location.value.gallery
-  if (location.value?.images?.length) return location.value.images
-  return []
+  return location.value?.gallery || []
 })
 
 const facts = computed(() => {
-  return location.value?.facts || location.value?.fun_facts || []
+  return location.value?.facts || []
 })
 
 const sources = computed(() => {
@@ -209,7 +199,7 @@ watch(
   () => route.params.slug,
   () => {
     loadLocation()
-  }
+  },
 )
 </script>
 

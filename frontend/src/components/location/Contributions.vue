@@ -75,7 +75,12 @@
       </v-card>
     </div>
 
-    <v-dialog v-model="formDialog" max-width="760">
+    <v-dialog
+      v-model="formDialog"
+      :fullscreen="$vuetify.display.smAndDown"
+      max-width="760"
+      scrollable
+    >
       <v-card class="dialog-card" rounded="xl">
         <v-card-title class="dialog-title">
           <span>Adaugă o contribuție</span>
@@ -161,7 +166,12 @@
       </v-card>
     </v-dialog>
 
-    <v-dialog v-model="detailsDialog" max-width="760">
+    <v-dialog
+      v-model="detailsDialog"
+      :fullscreen="$vuetify.display.smAndDown"
+      max-width="760"
+      scrollable
+    >
       <v-card v-if="selectedContribution" class="dialog-card" rounded="xl">
         <div
           v-if="selectedContribution.image_url"
@@ -523,6 +533,98 @@ watch(
 
   .dialog-actions .v-btn {
     width: 100%;
+  }
+
+  .contributions-grid {
+    max-height: 520px;
+  }
+}
+
+.dialog-card {
+  background: rgba(24, 24, 24, 0.98);
+  border: 1px solid rgba(255, 138, 0, 0.18);
+  color: #f5f5f5;
+  overflow: hidden;
+}
+
+.dialog-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 22px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.details-image {
+  height: 280px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 24px 24px 0 0;
+}
+
+@media (max-width: 700px) {
+  .section-top {
+    flex-direction: column;
+  }
+
+  .section-top .v-btn {
+    width: 100%;
+  }
+
+  .dialog-card {
+    height: 100dvh;
+    border-radius: 0 !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dialog-title {
+    padding: 14px 16px;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .dialog-card .v-card-subtitle {
+    padding: 0 16px 12px;
+    white-space: normal;
+    line-height: 1.5;
+  }
+
+  .dialog-card .v-card-text {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+  }
+
+  .dialog-actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+    padding-bottom: max(4px, env(safe-area-inset-bottom));
+  }
+
+  .dialog-actions .v-btn {
+    width: 100%;
+  }
+
+  .details-image {
+    height: 220px;
+    border-radius: 0;
+    flex-shrink: 0;
+  }
+
+  .details-name {
+    font-size: 1.25rem;
+  }
+
+  .details-message {
+    font-size: 0.95rem;
+    line-height: 1.7;
   }
 
   .contributions-grid {
