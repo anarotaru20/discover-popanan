@@ -8,26 +8,16 @@
       </p>
     </div>
 
-    <v-alert
-      v-if="commentsStore.error"
-      type="error"
-      variant="tonal"
-      class="mb-4"
-    >
+    <v-alert v-if="commentsStore.error" type="error" variant="tonal" class="mb-4">
       {{ commentsStore.error }}
     </v-alert>
 
-    <v-alert
-      v-if="commentsStore.successMessage"
-      type="success"
-      variant="tonal"
-      class="mb-4"
-    >
+    <v-alert v-if="commentsStore.successMessage" type="success" variant="tonal" class="mb-4">
       {{ commentsStore.successMessage }}
     </v-alert>
 
     <v-card class="comment-form-card" rounded="xl">
-      <v-card-title>Adaugă un comentariu</v-card-title>
+      <v-card-title style="padding-bottom: 20px">Adaugă un comentariu</v-card-title>
 
       <v-card-text>
         <v-form @submit.prevent="submitComment">
@@ -65,17 +55,9 @@
     </v-card>
 
     <div class="comments-list">
-      <v-progress-circular
-        v-if="commentsStore.loading"
-        indeterminate
-        color="orange"
-        class="my-6"
-      />
+      <v-progress-circular v-if="commentsStore.loading" indeterminate color="orange" class="my-6" />
 
-      <p
-        v-else-if="!commentsStore.comments.length"
-        class="empty-message"
-      >
+      <p v-else-if="!commentsStore.comments.length" class="empty-message">
         Nu există comentarii încă. Fii prima persoană care lasă o reacție.
       </p>
 
@@ -107,15 +89,15 @@ import { useCommentsStore } from '@/stores/comments'
 const props = defineProps({
   locationId: {
     type: [String, Number],
-    required: true
-  }
+    required: true,
+  },
 })
 
 const commentsStore = useCommentsStore()
 
 const form = reactive({
   name: '',
-  message: ''
+  message: '',
 })
 
 const canSubmit = computed(() => {
@@ -134,7 +116,7 @@ const submitComment = async () => {
   await commentsStore.addComment({
     location_id: props.locationId,
     name: form.name.trim(),
-    message: form.message.trim()
+    message: form.message.trim(),
   })
 
   if (!commentsStore.error) {
@@ -149,7 +131,7 @@ const formatDate = (date) => {
   return new Intl.DateTimeFormat('ro-RO', {
     day: '2-digit',
     month: 'long',
-    year: 'numeric'
+    year: 'numeric',
   }).format(new Date(date))
 }
 
@@ -163,7 +145,7 @@ watch(
   () => {
     commentsStore.clearMessages()
     loadComments()
-  }
+  },
 )
 </script>
 
@@ -197,6 +179,7 @@ watch(
 
 .comment-form-card,
 .comment-card {
+  padding: 15px;
   background: rgba(24, 24, 24, 0.92);
   border: 1px solid rgba(255, 138, 0, 0.18);
 }
@@ -206,9 +189,37 @@ watch(
 }
 
 .comments-list {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
+
+  height: 420px;
+  overflow-y: auto;
+
+  padding: 4px 10px 4px 0;
+  margin-top: 8px;
 }
+
+.comment-card {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+
+.comments-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.comments-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+}
+
+.comments-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 138, 0, 0.65);
+  border-radius: 999px;
+}
+
 
 .empty-message {
   color: rgba(245, 245, 245, 0.64);
@@ -235,6 +246,14 @@ watch(
 }
 
 @media (max-width: 600px) {
+  .comment-top {
+    flex-direction: column;
+    gap: 4px;
+  }
+  .comments-list {
+    max-height: 480px;
+  }
+
   .comment-top {
     flex-direction: column;
     gap: 4px;
