@@ -2,7 +2,7 @@
   {
     "id": 1,
     "slug": "biserica-popa-nan",
-    "title": "Biserica Popa Nan (Sfântul Gheorghe)",
+    "title": "Biserica Popa Nan",
     "type": "lacas-cult",
     "categoryLabel": "Lăcaș de cult",
     "address": "Str. Popa Nan nr. 47B",
@@ -17,7 +17,9 @@
     "gallery": [
       "/images/locations/biserica-popa-nan/1.jpg",
       "/images/locations/biserica-popa-nan/2.jpg",
-      "/images/locations/biserica-popa-nan/3.jpg"
+      "/images/locations/biserica-popa-nan/3.jpg",
+      "/images/locations/biserica-popa-nan/4.jpg",
+      "/images/locations/biserica-popa-nan/5.jpg"
     ],
     "audio": "/audio/biserica-popa-nan.mp3",
     "timeline": [
@@ -59,10 +61,7 @@
         "url": null
       }
     ],
-    "tourIds": [
-      "popa-nan-interbelic",
-      "memoria-strazii"
-    ]
+    "tourIds": ["popa-nan-interbelic", "memoria-strazii"]
   },
   {
     "id": 2,
@@ -108,10 +107,7 @@
         "url": null
       }
     ],
-    "tourIds": [
-      "memoria-strazii",
-      "popa-nan-interbelic"
-    ]
+    "tourIds": ["memoria-strazii", "popa-nan-interbelic"]
   },
   {
     "id": 3,
@@ -163,10 +159,7 @@
         "url": null
       }
     ],
-    "tourIds": [
-      "fabrici-si-mahalale",
-      "memoria-strazii"
-    ]
+    "tourIds": ["fabrici-si-mahalale", "memoria-strazii"]
   },
   {
     "id": 4,
@@ -222,10 +215,7 @@
         "url": null
       }
     ],
-    "tourIds": [
-      "popa-nan-interbelic",
-      "memoria-strazii"
-    ]
+    "tourIds": ["popa-nan-interbelic", "memoria-strazii"]
   },
   {
     "id": 5,
@@ -282,10 +272,6 @@
         "url": null
       }
     ],
-    "tourIds": [
-      "urmele-comunismului",
-      "fabrici-si-mahalale",
-      "memoria-strazii"
-    ]
+    "tourIds": ["urmele-comunismului", "fabrici-si-mahalale", "memoria-strazii"]
   }
 ]
