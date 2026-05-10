@@ -7,7 +7,7 @@ export const useContributionsStore = defineStore('contributions', {
     loading: false,
     submitting: false,
     error: null,
-    successMessage: null
+    successMessage: null,
   }),
 
   actions: {
@@ -17,7 +17,7 @@ export const useContributionsStore = defineStore('contributions', {
 
       try {
         const response = await contributionsService.getContributionsByLocation(locationId)
-        this.contributions = response.data
+        this.contributions = response.data?.data || []
       } catch (error) {
         this.error = error.response?.data?.message || 'Nu s-au putut încărca contribuțiile.'
       } finally {
@@ -50,6 +50,6 @@ export const useContributionsStore = defineStore('contributions', {
     clearMessages() {
       this.error = null
       this.successMessage = null
-    }
-  }
+    },
+  },
 })

@@ -16,7 +16,7 @@ export const useLocationsStore = defineStore('locations', {
 
       try {
         const response = await locationsService.getAllLocations()
-        this.locations = response.data
+        this.locations = response.data?.data || []
       } catch (error) {
         this.error = error.response?.data?.message || 'Nu s-au putut încărca locațiile.'
       } finally {
@@ -31,7 +31,7 @@ export const useLocationsStore = defineStore('locations', {
 
       try {
         const response = await locationsService.getLocationBySlug(slug)
-        this.selectedLocation = response.data
+        this.selectedLocation = response.data?.data || null
       } catch (error) {
         this.error = error.response?.data?.message || 'Nu s-a putut încărca locația.'
       } finally {

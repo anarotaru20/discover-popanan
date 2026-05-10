@@ -7,7 +7,7 @@ export const useCommentsStore = defineStore('comments', {
     loading: false,
     submitting: false,
     error: null,
-    successMessage: null
+    successMessage: null,
   }),
 
   actions: {
@@ -17,7 +17,7 @@ export const useCommentsStore = defineStore('comments', {
 
       try {
         const response = await commentsService.getCommentsByLocation(locationId)
-        this.comments = response.data
+        this.comments = response.data?.data || []
       } catch (error) {
         this.error = error.response?.data?.message || 'Nu s-au putut încărca comentariile.'
       } finally {
@@ -50,6 +50,6 @@ export const useCommentsStore = defineStore('comments', {
     clearMessages() {
       this.error = null
       this.successMessage = null
-    }
-  }
+    },
+  },
 })
