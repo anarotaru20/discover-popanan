@@ -13,11 +13,26 @@
     "audioIntro": "/audio/tours/memoria-strazii-intro.mp3",
     "color": "#FF8A00",
     "stops": [
-      "biserica-popa-nan",
-      "casa-popa-nan-32",
-      "casa-gheorghe-braescu",
-      "electrecord-popa-nan",
-      "fabrica-de-matase-popa-nan"
+      {
+        "slug": "biserica-popa-nan",
+        "audio": "/audio/biserica-popa-nan.mp3"
+      },
+      {
+        "slug": "casa-popa-nan-32",
+        "audio": "/audio/casa-popa-nan-32.mp3"
+      },
+      {
+        "slug": "casa-gheorghe-braescu",
+        "audio": "/audio/casa-gheorghe-braescu.mp3"
+      },
+      {
+        "slug": "electrecord-popa-nan",
+        "audio": "/audio/electrecord-popa-nan.mp3"
+      },
+      {
+        "slug": "fabrica-de-matase-popa-nan",
+        "audio": "/audio/fabrica-de-matase-popa-nan.mp3"
+      }
     ]
   },
   {
@@ -33,11 +48,7 @@
     "coverImage": "/images/tours/popa-nan-interbelic.jpg",
     "audioIntro": "/audio/tours/popa-nan-interbelic-intro.mp3",
     "color": "#D97706",
-    "stops": [
-      "biserica-popa-nan",
-      "casa-popa-nan-32",
-      "casa-gheorghe-braescu"
-    ]
+    "stops": ["biserica-popa-nan", "casa-popa-nan-32", "casa-gheorghe-braescu"]
   },
   {
     "id": 3,
@@ -52,10 +63,7 @@
     "coverImage": "/images/tours/fabrici-si-mahalale.jpg",
     "audioIntro": "/audio/tours/fabrici-si-mahalale-intro.mp3",
     "color": "#EA580C",
-    "stops": [
-      "electrecord-popa-nan",
-      "fabrica-de-matase-popa-nan"
-    ]
+    "stops": ["electrecord-popa-nan", "fabrica-de-matase-popa-nan"]
   },
   {
     "id": 4,
