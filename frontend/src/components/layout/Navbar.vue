@@ -7,6 +7,7 @@
       </RouterLink>
 
       <div class="nav-links desktop-links">
+        <RouterLink to="/sights">Obiective</RouterLink>
         <RouterLink to="/map">Hartă</RouterLink>
         <RouterLink to="/tours">Tururi</RouterLink>
         <RouterLink to="/about">Despre noi</RouterLink>
@@ -25,6 +26,7 @@
         </template>
 
         <v-list bg-color="#181818">
+          <v-list-item to="/sights" title="Obiective" />
           <v-list-item to="/map" title="Hartă" />
           <v-list-item to="/tours" title="Tururi" />
           <v-list-item to="/about" title="Despre noi" />
