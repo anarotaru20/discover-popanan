@@ -1,13 +1,15 @@
 <template>
   <main class="locations-page">
     <section class="locations-hero">
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
       <v-container class="content-wrap">
         <div class="hero-content">
           <p class="eyebrow">Obiective turistice</p>
 
           <h1>Locuri care păstrează memoria străzii Popa Nan</h1>
 
-          <p >
+          <p>
             Explorează obiective istorice, case vechi, spații culturale și repere urbane care spun
             povestea cartierului.
           </p>
@@ -127,10 +129,38 @@ onMounted(async () => {
 .locations-hero {
   padding: 100px 0 44px;
 }
+.locations-hero {
+  position: relative;
+  padding: 100px 0 44px;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(12px);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.hero-glow-one {
+  width: 260px;
+  height: 260px;
+  top: 80px;
+  right: 12%;
+  background: rgba(255, 138, 0, 0.16);
+}
+
+.hero-glow-two {
+  width: 160px;
+  height: 160px;
+  bottom: 20px;
+  left: 8%;
+  background: rgba(234, 88, 12, 0.12);
+}
 
 .hero-content {
   max-width: 850px;
-  
 }
 
 .hero-content .eyebrow {
@@ -150,7 +180,6 @@ onMounted(async () => {
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
-
 
 .locations-hero h1 {
   max-width: 860px;
@@ -364,7 +393,6 @@ onMounted(async () => {
 .details-btn {
   min-height: 44px;
   background: linear-gradient(135deg, #ff8a00, #ea580c);
-
 }
 
 @media (max-width: 1180px) {
