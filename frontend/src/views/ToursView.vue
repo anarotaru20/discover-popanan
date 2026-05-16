@@ -4,96 +4,85 @@
       <div class="hero-glow hero-glow-one"></div>
       <div class="hero-glow hero-glow-two"></div>
 
-      <div class="hero-content">
-        <div class="eyebrow">Tururi ghidate</div>
+      <v-container class="content-wrap">
+        <div class="hero-content">
+          <div class="eyebrow">Tururi ghidate</div>
 
-        <h1>Explorează Popa Nan prin trasee cu poveste</h1>
+          <h1>Explorează Popa Nan prin trasee cu poveste</h1>
 
-        <p>
-          Alege un tur tematic și descoperă strada prin repere istorice,
-          case vechi, industrie, memorie urbană și povești ale comunității.
-        </p>
-      </div>
+          <p>
+            Alege un tur tematic și descoperă strada prin repere istorice, case vechi, industrie,
+            memorie urbană și povești ale comunității.
+          </p>
+        </div>
+      </v-container>
     </section>
 
     <section class="tours-section">
-      <div class="section-head">
-        <div>
-          <span class="section-kicker">Trasee disponibile</span>
-          <h2>Tururi pentru fiecare fel de explorator urban</h2>
+      <v-container class="content-wrap">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Trasee disponibile</span>
+          </div>
         </div>
 
-        <div class="filters">
-          <button
-            v-for="theme in themes"
-            :key="theme.value"
-            class="filter-btn"
-            :class="{ active: selectedTheme === theme.value }"
-            @click="selectedTheme = theme.value"
+        <div v-if="loading" class="state-card">Se încarcă tururile...</div>
+
+        <div v-else-if="error" class="state-card error">
+          {{ error }}
+        </div>
+
+        <div v-else class="tours-grid">
+          <article
+            v-for="tour in filteredTours"
+            :key="tour.id"
+            class="tour-card"
+            @click="goToTour(tour.slug)"
           >
-            {{ theme.label }}
-          </button>
+            <div class="tour-image-wrap">
+              <img :src="tour.coverImage" :alt="tour.title" class="tour-image" />
+
+              <div class="tour-overlay"></div>
+
+              <div class="tour-theme" :style="{ borderColor: tour.color, color: tour.color }">
+                {{ getThemeLabel(tour.theme) }}
+              </div>
+            </div>
+
+            <div class="tour-content">
+              <h3>{{ tour.title }}</h3>
+
+              <p>{{ tour.shortDescription }}</p>
+
+              <div class="tour-meta">
+                <span>
+                  <v-icon size="18">mdi-clock-outline</v-icon>
+                  {{ tour.duration }}
+                </span>
+
+                <span>
+                  <v-icon size="18">mdi-map-marker-distance</v-icon>
+                  {{ tour.distance }}
+                </span>
+
+                <span>
+                  <v-icon size="18">mdi-walk</v-icon>
+                  {{ tour.difficulty }}
+                </span>
+              </div>
+
+              <div class="tour-footer">
+                <span>{{ tour.stops.length }} opriri</span>
+
+                <button class="tour-btn" @click.stop="goToTour(tour.slug)">
+                  Vezi turul
+                  <v-icon size="18">mdi-arrow-right</v-icon>
+                </button>
+              </div>
+            </div>
+          </article>
         </div>
-      </div>
-
-      <div v-if="loading" class="state-card">
-        Se încarcă tururile...
-      </div>
-
-      <div v-else-if="error" class="state-card error">
-        {{ error }}
-      </div>
-
-      <div v-else class="tours-grid">
-        <article
-          v-for="tour in filteredTours"
-          :key="tour.id"
-          class="tour-card"
-          @click="goToTour(tour.slug)"
-        >
-          <div class="tour-image-wrap">
-            <img :src="tour.coverImage" :alt="tour.title" class="tour-image" />
-
-            <div class="tour-overlay"></div>
-
-            <div class="tour-theme" :style="{ borderColor: tour.color, color: tour.color }">
-              {{ getThemeLabel(tour.theme) }}
-            </div>
-          </div>
-
-          <div class="tour-content">
-            <h3>{{ tour.title }}</h3>
-
-            <p>{{ tour.shortDescription }}</p>
-
-            <div class="tour-meta">
-              <span>
-                <v-icon size="18">mdi-clock-outline</v-icon>
-                {{ tour.duration }}
-              </span>
-
-              <span>
-                <v-icon size="18">mdi-map-marker-distance</v-icon>
-                {{ tour.distance }}
-              </span>
-
-              <span>
-                <v-icon size="18">mdi-walk</v-icon>
-                {{ tour.difficulty }}
-              </span>
-            </div>
-
-            <div class="tour-footer">
-              <span>{{ tour.stops.length }} opriri</span>
-
-              <button class="tour-btn">
-                Vezi turul
-                <v-icon size="18">mdi-arrow-right</v-icon>
-              </button>
-            </div>
-          </div>
-        </article>
-      </div>
+      </v-container>
     </section>
   </main>
 </template>
@@ -116,7 +105,7 @@ const themes = [
   { label: 'General', value: 'general' },
   { label: 'Interbelic', value: 'interbelic' },
   { label: 'Industrial', value: 'industrial' },
-  { label: 'Comunism', value: 'comunism' }
+  { label: 'Comunism', value: 'comunism' },
 ]
 
 const filteredTours = computed(() => {
@@ -142,26 +131,27 @@ onMounted(() => {
 <style scoped>
 .tours-page {
   min-height: 100vh;
+  overflow-x: hidden;
   background:
-    radial-gradient(circle at top left, rgba(255, 138, 0, 0.18), transparent 34rem),
-    radial-gradient(circle at bottom right, rgba(249, 115, 22, 0.12), transparent 30rem),
-    #080808;
+    radial-gradient(circle at top left, rgba(255, 145, 0, 0.18), transparent 34%),
+    linear-gradient(135deg, #0d0d0d 0%, #17120d 45%, #080808 100%);
   color: #fff;
-  overflow: hidden;
+}
+
+.content-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1180px;
 }
 
 .tours-hero {
   position: relative;
-  min-height: 420px;
-  display: flex;
-  align-items: center;
-  padding: 7rem 7vw 4rem;
+  padding: 100px 0 44px;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 860px;
+  max-width: 850px;
 }
 
 .eyebrow,
@@ -169,32 +159,29 @@ onMounted(() => {
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  margin-bottom: 1rem;
-  padding: 0.45rem 0.9rem;
-  border: 1px solid rgba(255, 138, 0, 0.35);
-  border-radius: 999px;
-  background: rgba(255, 138, 0, 0.08);
-  color: #ffad4d;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+  color: #ff9800;
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .tours-hero h1 {
-  max-width: 780px;
-  margin: 0;
-  font-size: clamp(2.8rem, 7vw, 6.4rem);
-  line-height: 0.9;
-  letter-spacing: -0.07em;
+  max-width: 860px;
+  margin: 0 0 18px;
+  color: #f5f5f5;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
 }
 
 .tours-hero p {
   max-width: 680px;
-  margin-top: 1.5rem;
+  margin: 0;
   color: rgba(255, 255, 255, 0.72);
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 .hero-glow {
@@ -202,6 +189,7 @@ onMounted(() => {
   border-radius: 999px;
   filter: blur(12px);
   opacity: 0.8;
+  pointer-events: none;
 }
 
 .hero-glow-one {
@@ -223,22 +211,23 @@ onMounted(() => {
 .tours-section {
   position: relative;
   z-index: 2;
-  padding: 2rem 7vw 6rem;
+  padding: 24px 0 90px;
 }
 
 .section-head {
   display: flex;
-  justify-content: space-between;
-  gap: 2rem;
   align-items: flex-end;
-  margin-bottom: 2rem;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
 }
 
 .section-head h2 {
   max-width: 760px;
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  line-height: 1;
+  color: #f5f5f5;
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  line-height: 1.05;
   letter-spacing: -0.04em;
 }
 
@@ -246,53 +235,58 @@ onMounted(() => {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 0.65rem;
+  gap: 10px;
 }
 
 .filter-btn {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.055);
-  color: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 152, 0, 0.22);
   border-radius: 999px;
-  padding: 0.75rem 1rem;
-  font-weight: 700;
+  background: rgba(255, 255, 255, 0.045);
+  padding: 10px 15px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.84rem;
+  font-weight: 800;
   cursor: pointer;
-  transition: 0.25s ease;
+  transition: 0.22s ease;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-  border-color: rgba(255, 138, 0, 0.65);
-  background: rgba(255, 138, 0, 0.16);
-  color: #ffad4d;
+  border-color: rgba(255, 152, 0, 0.72);
+  background: rgba(255, 152, 0, 0.16);
+  color: #ffb74d;
 }
 
 .tours-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.35rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
 }
 
 .tour-card {
+  min-width: 0;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.055);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 152, 0, 0.16);
+  border-radius: 32px;
+  background: rgba(18, 18, 18, 0.74);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
   cursor: pointer;
-  transition: 0.3s ease;
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
 }
 
 .tour-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(255, 138, 0, 0.42);
-  box-shadow: 0 34px 110px rgba(255, 138, 0, 0.13);
+  border-color: rgba(255, 152, 0, 0.58);
+  transform: translateY(-7px);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
 }
 
 .tour-image-wrap {
   position: relative;
-  height: 245px;
+  height: 240px;
   overflow: hidden;
 }
 
@@ -300,111 +294,126 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: 0.45s ease;
+  filter: saturate(0.88) contrast(1.08);
+  transition: 0.4s ease;
 }
 
 .tour-card:hover .tour-image {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 .tour-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.05), rgba(8, 8, 8, 0.86)),
-    radial-gradient(circle at top right, rgba(255, 138, 0, 0.16), transparent 55%);
+    linear-gradient(to top, rgba(0, 0, 0, 0.78), transparent 55%),
+    radial-gradient(circle at top right, rgba(255, 152, 0, 0.18), transparent 38%);
 }
 
 .tour-theme {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  left: 18px;
+  bottom: 18px;
+  z-index: 2;
   border: 1px solid;
   border-radius: 999px;
-  padding: 0.45rem 0.75rem;
-  background: rgba(0, 0, 0, 0.62);
-  backdrop-filter: blur(12px);
-  font-size: 0.74rem;
-  font-weight: 800;
-  text-transform: uppercase;
+  background: rgba(18, 12, 6, 0.76);
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  font-weight: 900;
   letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
 }
 
 .tour-content {
-  padding: 1.35rem;
+  padding: 22px;
 }
 
 .tour-content h3 {
-  margin: 0 0 0.75rem;
-  font-size: 1.35rem;
+  margin: 0 0 10px;
+  color: #f5f5f5;
+  font-size: 1.45rem;
   line-height: 1.1;
   letter-spacing: -0.03em;
 }
 
 .tour-content p {
-  min-height: 96px;
+  display: -webkit-box;
+  min-height: 72px;
   margin: 0;
-  color: rgba(255, 255, 255, 0.66);
-  font-size: 0.95rem;
-  line-height: 1.65;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.94rem;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .tour-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-top: 1.25rem;
+  gap: 8px;
+  margin-top: 18px;
 }
 
 .tour-meta span {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.45rem 0.65rem;
+  gap: 6px;
+  border: 1px solid rgba(255, 152, 0, 0.18);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.07);
-  color: rgba(255, 255, 255, 0.76);
-  font-size: 0.82rem;
+  background: rgba(255, 152, 0, 0.08);
+  padding: 7px 11px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.78rem;
   font-weight: 700;
 }
 
 .tour-footer {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1.4rem;
-  padding-top: 1.1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 152, 0, 0.14);
 }
 
 .tour-footer span {
   color: rgba(255, 255, 255, 0.58);
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .tour-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
   border: 0;
   border-radius: 999px;
   background: linear-gradient(135deg, #ff8a00, #ea580c);
   color: #120700;
-  padding: 0.7rem 0.9rem;
+  padding: 0 16px;
   font-weight: 900;
   cursor: pointer;
+  transition: 0.22s ease;
+}
+
+.tour-btn:hover {
+  transform: translateX(3px);
 }
 
 .state-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 220px;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.055);
+  min-height: 320px;
+  border: 1px solid rgba(255, 152, 0, 0.16);
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.045);
   color: rgba(255, 255, 255, 0.72);
   font-weight: 700;
 }
@@ -415,7 +424,7 @@ onMounted(() => {
   background: rgba(127, 29, 29, 0.18);
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1180px) {
   .tours-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -430,22 +439,86 @@ onMounted(() => {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .tours-hero {
-    min-height: auto;
-    padding: 6rem 1.2rem 3rem;
+    padding: 74px 0 28px;
+  }
+
+  .content-wrap {
+    padding-inline: 20px;
+  }
+
+  .eyebrow,
+  .section-kicker {
+    font-size: 1.3rem;
+    letter-spacing: 0.14em;
+  }
+
+  .tours-hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.45rem, 12vw, 3.7rem);
+    line-height: 0.98;
+  }
+
+  .tours-hero p {
+    max-width: 100%;
+    font-size: 1rem;
+    line-height: 1.65;
   }
 
   .tours-section {
-    padding: 1rem 1.2rem 4rem;
+    padding: 20px 0 64px;
+  }
+
+  .section-head {
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(2rem, 9vw, 2.55rem);
+  }
+
+  .filters {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
   }
 
   .tours-grid {
     grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .tour-card {
+    border-radius: 26px;
+  }
+
+  .tour-card:hover {
+    transform: none;
   }
 
   .tour-image-wrap {
     height: 220px;
+  }
+
+  .tour-content {
+    padding: 20px;
+  }
+
+  .tour-content h3 {
+    font-size: 1.32rem;
   }
 
   .tour-content p {
@@ -453,13 +526,59 @@ onMounted(() => {
   }
 
   .tour-footer {
-    align-items: flex-start;
+    align-items: flex-end;
     flex-direction: column;
   }
 
   .tour-btn {
     width: 100%;
-    justify-content: center;
+    min-height: 48px;
+  }
+
+  .state-card {
+    min-height: 260px;
+    border-radius: 26px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .content-wrap {
+    padding-inline: 16px;
+  }
+
+  .tours-hero {
+    padding: 58px 0 24px;
+  }
+
+  .tours-section {
+    padding: 18px 0 56px;
+  }
+
+  .tours-hero h1 {
+    font-size: clamp(2.25rem, 13vw, 3rem);
+  }
+
+  .tour-image-wrap {
+    height: 205px;
+  }
+
+  .tour-theme {
+    left: 14px;
+    bottom: 14px;
+    max-width: calc(100% - 28px);
+    padding: 7px 10px;
+    font-size: 0.7rem;
+  }
+
+  .tour-content {
+    padding: 18px;
+  }
+
+  .tour-meta span {
+    width: 100%;
+    border-radius: 18px;
+    line-height: 1.35;
   }
 }
 </style>
