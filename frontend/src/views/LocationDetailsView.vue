@@ -34,9 +34,18 @@
           </p>
 
           <div class="hero-actions">
-            <v-btn color="orange" size="large" rounded="xl" to="/tours"> Începe turul </v-btn>
+            <v-btn color="orange" size="large" rounded="xl" to="/tours" style="font-weight: 700">
+              Alege turul
+            </v-btn>
 
-            <v-btn variant="outlined" color="white" size="large" rounded="xl" to="/map">
+            <v-btn
+              variant="outlined"
+              color="white"
+              size="large"
+              rounded="xl"
+              to="/map"
+              style="font-weight: 700"
+            >
               Vezi pe hartă
             </v-btn>
           </div>
@@ -45,8 +54,8 @@
 
       <v-container class="content-container">
         <section class="story-section">
-          <p class="eyebrow">Povestea locului</p>
-          <h2>Istoria din spatele locului</h2>
+          <p class="eyebrow">Istoria din spatele locului</p>
+          <!-- <h2>Istoria din spatele locului</h2> -->
 
           <p class="story-text">
             {{ location.fullDescription || 'Povestea completă va fi adăugată în curând.' }}
@@ -55,8 +64,7 @@
 
         <section v-if="timelineItems.length" class="timeline-section">
           <p class="eyebrow">Timeline</p>
-          <h2>Momente importante</h2>
-
+          <br />
           <div class="timeline-list">
             <div v-for="item in timelineItems" :key="item.year + item.title" class="timeline-item">
               <div class="timeline-year">
@@ -71,16 +79,6 @@
           </div>
         </section>
 
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.840373547727!2d26.122552276563244!3d44.4364365014224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff2ede01ee37%3A0x26ade6c613c319f6!2sBiserica%20Popa%20Nan!5e0!3m2!1sro!2sro!4v1778408658297!5m2!1sro!2sro"
-          width="600"
-          height="450"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-
         <BeforeAfter
           v-if="location.beforeImage && location.afterImage"
           :before-image="location.beforeImage"
@@ -90,11 +88,9 @@
 
         <Gallery v-if="galleryImages.length" :images="galleryImages" />
 
-        <Audio v-if="location.audio" :audio-url="location.audio" :title="location.title" />
-
         <section v-if="facts.length" class="facts-section">
           <p class="eyebrow">Știai că?</p>
-          <h2>Detalii interesante</h2>
+          <br />
 
           <div class="facts-grid">
             <v-card v-for="fact in facts" :key="fact" class="fact-card" rounded="xl">
@@ -115,25 +111,7 @@
           :address="location.address"
         />
 
-        <section v-if="sources.length" class="sources-section">
-          <p class="eyebrow">Surse</p>
-          <h2>Documentare și referințe</h2>
-
-          <div class="sources-list">
-            <v-card v-for="source in sources" :key="source.title" class="source-card" rounded="xl">
-              <v-card-text>
-                <strong>{{ source.title }}</strong>
-                <p>{{ source.type }}</p>
-
-                <a v-if="source.url" :href="source.url" target="_blank" rel="noopener noreferrer">
-                  Vezi sursa
-                </a>
-              </v-card-text>
-            </v-card>
-          </div>
-        </section>
-
-        <Contributions v-if="location?.id" :location-id="location.id" />
+        <!-- <Contributions v-if="location?.id" :location-id="location.id" /> -->
 
         <Comments v-if="location?.id" :location-id="location.id" />
       </v-container>
@@ -276,7 +254,7 @@ watch(
   color: #ff8a00;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  font-size: 0.78rem;
+  font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 8px;
 }
@@ -290,8 +268,9 @@ h2 {
   color: rgba(245, 245, 245, 0.76);
   font-size: 1.08rem;
   line-height: 1.9;
-  max-width: 880px;
+  max-width: 100%;
   white-space: pre-line;
+  text-align: justify;
 }
 
 .timeline-list {
