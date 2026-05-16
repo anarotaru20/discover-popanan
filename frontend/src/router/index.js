@@ -7,6 +7,7 @@ import TourDetailsView from '@/views/TourDetailsView.vue'
 import LocationDetailsView from '@/views/LocationDetailsView.vue'
 import AboutView from '@/views/AboutView.vue'
 import SightsView from '@/views/SightsView.vue'
+import ContributionsView from '@/views/ContributionsView.vue'
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
     path: '/location/:slug',
     name: 'location-details',
     component: LocationDetailsView,
+  },
+    {
+    path: '/contributions',
+    name: 'contributions',
+    component: ContributionsView,
   },
   {
     path: '/about',

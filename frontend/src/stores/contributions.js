@@ -31,15 +31,21 @@ export const useContributionsStore = defineStore('contributions', {
       this.successMessage = null
 
       try {
+        const locationId =
+          payload instanceof FormData ? payload.get('location_id') : payload.location_id
+
         const response = await contributionsService.createContribution(payload)
 
-        if (response.data?.is_flagged) {
-          this.error = response.data?.flag_reason || 'Contribuția nu poate fi publicată automat.'
+        if (response.data?.data?.is_flagged) {
+          this.error =
+            response.data?.moderation?.reason ||
+            response.data?.message ||
+            'Contribuția nu poate fi publicată automat.'
           return
         }
 
         this.successMessage = 'Contribuția a fost adăugată în arhiva comunității.'
-        await this.fetchContributions(payload.location_id)
+        await this.fetchContributions(locationId)
       } catch (error) {
         this.error = error.response?.data?.message || 'Contribuția nu a putut fi trimisă.'
       } finally {
