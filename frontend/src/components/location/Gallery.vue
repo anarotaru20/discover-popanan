@@ -2,7 +2,7 @@
   <section class="gallery-section">
     <div class="section-header">
       <p class="eyebrow">Galerie foto</p>
-      <h2>Imagini ale locului</h2>
+      <!-- <h2>Imagini ale locului</h2> -->
       <p class="section-description">
         Fotografii istorice și imagini actuale care completează povestea locului.
       </p>
@@ -23,7 +23,8 @@
     <v-dialog v-model="dialog" :fullscreen="$vuetify.display.smAndDown" max-width="980">
       <v-card class="dialog-card" rounded="xl">
         <v-card-title class="dialog-title">
-          <span>Imagine galerie</span>
+          <!-- <span>Imagine galerie</span> -->
+          <p class="eyebrow-img">imagini</p>
 
           <v-btn icon variant="text" @click="closeImage">
             <v-icon>mdi-close</v-icon>
@@ -31,7 +32,11 @@
         </v-card-title>
 
         <v-card-text class="dialog-content">
-          <div class="dialog-image-wrapper">
+          <div
+            class="dialog-image-wrapper"
+            @touchstart="handleTouchStart"
+            @touchend="handleTouchEnd"
+          >
             <img
               v-if="currentImage"
               :src="currentImage"
@@ -69,6 +74,8 @@ const props = defineProps({
 
 const dialog = ref(false)
 const selectedIndex = ref(0)
+const touchStartX = ref(0)
+const touchEndX = ref(0)
 
 const currentImage = computed(() => {
   return props.images[selectedIndex.value]
@@ -95,6 +102,28 @@ const prevImage = () => {
 
   selectedIndex.value = selectedIndex.value > 0 ? selectedIndex.value - 1 : props.images.length - 1
 }
+
+const handleTouchStart = (event) => {
+  touchStartX.value = event.changedTouches[0].screenX
+}
+
+const handleTouchEnd = (event) => {
+  touchEndX.value = event.changedTouches[0].screenX
+  handleSwipe()
+}
+
+const handleSwipe = () => {
+  const swipeDistance = touchStartX.value - touchEndX.value
+  const minSwipeDistance = 50
+
+  if (Math.abs(swipeDistance) < minSwipeDistance) return
+
+  if (swipeDistance > 0) {
+    nextImage()
+  } else {
+    prevImage()
+  }
+}
 </script>
 <style scoped>
 .gallery-section {
@@ -109,7 +138,15 @@ const prevImage = () => {
   color: #ff8a00;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  font-size: 0.78rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.eyebrow-img {
+  color: #ff8a00;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 8px;
 }
