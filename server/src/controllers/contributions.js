@@ -5,6 +5,28 @@ const {
 
 const { analyzeText, normalizeText } = require("../utils/textFilter");
 
+function normalizeImageUrls(value) {
+  if (!value) {
+    return [];
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((url) => normalizeText(url)).filter(Boolean);
+  }
+
+  try {
+    const parsedValue = JSON.parse(value);
+
+    if (Array.isArray(parsedValue)) {
+      return parsedValue.map((url) => normalizeText(url)).filter(Boolean);
+    }
+  } catch (error) {
+    return [normalizeText(value)].filter(Boolean);
+  }
+
+  return [];
+}
+
 async function getContributions(req, res, next) {
   try {
     const { locationId } = req.params;
@@ -35,7 +57,7 @@ async function addContribution(req, res, next) {
     const type = normalizeText(req.body.type);
     const message = normalizeText(req.body.message);
     const source_url = normalizeText(req.body.source_url);
-    const image_url = normalizeText(req.body.image_url);
+    const image_url = normalizeImageUrls(req.body.image_url);
 
     if (!location_id || !name || !type || !message) {
       return res.status(400).json({
@@ -73,15 +95,25 @@ async function addContribution(req, res, next) {
       });
     }
 
+    if (image_url.length > 6) {
+      return res.status(400).json({
+        success: false,
+        message: "You can upload maximum 6 images",
+      });
+    }
+
     const nameModeration = analyzeText(name);
     const messageModeration = analyzeText(message);
     const sourceModeration = analyzeText(source_url);
+    const imageModeration = analyzeText(image_url.join(" "));
 
     const moderation = nameModeration.isFlagged
       ? nameModeration
       : messageModeration.isFlagged
         ? messageModeration
-        : sourceModeration;
+        : sourceModeration.isFlagged
+          ? sourceModeration
+          : imageModeration;
 
     const is_flagged = moderation.isFlagged;
 
@@ -91,7 +123,7 @@ async function addContribution(req, res, next) {
       type,
       message,
       source_url: source_url || null,
-      image_url: image_url || null,
+      image_url,
       is_flagged,
     });
 

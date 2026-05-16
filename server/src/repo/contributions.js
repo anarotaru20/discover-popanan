@@ -35,7 +35,7 @@ async function createContribution(payload) {
         type,
         message,
         source_url,
-        image_url,
+        image_url: image_url || [],
         is_flagged,
       },
     ])
