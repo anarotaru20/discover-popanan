@@ -1,9 +1,15 @@
+const crypto = require("crypto");
+const path = require("path");
+const supabase = require("../config/supabase");
+
 const {
   getContributionsByLocation,
   createContribution,
 } = require("../repo/contributions");
 
 const { analyzeText, normalizeText } = require("../utils/textFilter");
+
+const BUCKET_NAME = "contributions";
 
 function normalizeImageUrls(value) {
   if (!value) {
@@ -25,6 +31,37 @@ function normalizeImageUrls(value) {
   }
 
   return [];
+}
+
+async function uploadContributionImages(files = []) {
+  const imageUrls = [];
+
+  for (const file of files) {
+    if (!file.mimetype.startsWith("image/")) {
+      throw new Error("Only image files are allowed");
+    }
+
+    const extension = path.extname(file.originalname) || ".jpg";
+    const fileName = `${crypto.randomUUID()}${extension}`;
+    const filePath = `community/${fileName}`;
+
+    const { error } = await supabase.storage
+      .from(BUCKET_NAME)
+      .upload(filePath, file.buffer, {
+        contentType: file.mimetype,
+        upsert: false,
+      });
+
+    if (error) {
+      throw error;
+    }
+
+    const { data } = supabase.storage.from(BUCKET_NAME).getPublicUrl(filePath);
+
+    imageUrls.push(data.publicUrl);
+  }
+
+  return imageUrls;
 }
 
 async function getContributions(req, res, next) {
@@ -57,7 +94,10 @@ async function addContribution(req, res, next) {
     const type = normalizeText(req.body.type);
     const message = normalizeText(req.body.message);
     const source_url = normalizeText(req.body.source_url);
-    const image_url = normalizeImageUrls(req.body.image_url);
+
+    const uploadedImageUrls = await uploadContributionImages(req.files || []);
+    const bodyImageUrls = normalizeImageUrls(req.body.image_url);
+    const image_url = [...bodyImageUrls, ...uploadedImageUrls];
 
     if (!location_id || !name || !type || !message) {
       return res.status(400).json({
@@ -95,25 +135,22 @@ async function addContribution(req, res, next) {
       });
     }
 
-    if (image_url.length > 6) {
+    if (image_url.length > 3) {
       return res.status(400).json({
         success: false,
-        message: "You can upload maximum 6 images",
+        message: "You can upload maximum 3 images",
       });
     }
 
     const nameModeration = analyzeText(name);
     const messageModeration = analyzeText(message);
     const sourceModeration = analyzeText(source_url);
-    const imageModeration = analyzeText(image_url.join(" "));
 
     const moderation = nameModeration.isFlagged
       ? nameModeration
       : messageModeration.isFlagged
         ? messageModeration
-        : sourceModeration.isFlagged
-          ? sourceModeration
-          : imageModeration;
+        : sourceModeration;
 
     const is_flagged = moderation.isFlagged;
 
