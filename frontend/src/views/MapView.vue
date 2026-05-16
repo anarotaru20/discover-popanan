@@ -1,127 +1,164 @@
 <template>
   <main class="explore-map-page">
     <section class="map-hero">
-      <div class="hero-content">
-        <p class="eyebrow">Explorează strada</p>
-        <h1>Harta interactivă Popa Nan</h1>
-        <p>
-          Descoperă locurile importante de pe traseu, poveștile lor și legătura dintre Bucureștiul
-          de azi și memoria orașului vechi.
-        </p>
-      </div>
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+
+      <v-container class="content-wrap">
+        <div class="hero-content">
+          <p class="eyebrow">Explorează strada</p>
+
+          <h1>Harta interactivă Popa Nan</h1>
+
+          <p>
+            Descoperă locurile importante de pe traseu, poveștile lor și legătura dintre Bucureștiul
+            de azi și memoria orașului vechi.
+          </p>
+        </div>
+      </v-container>
     </section>
 
-    <section class="map-shell">
-      <aside class="map-sidebar">
-        <div class="sidebar-header">
-          <p class="eyebrow">Locații</p>
-          <h2>Puncte de interes</h2>
-        </div>
-
-        <v-alert v-if="locationsStore.error" type="error" variant="tonal" class="mb-4">
-          {{ locationsStore.error }}
-        </v-alert>
-
-        <div v-if="locationsStore.loading" class="loading-box">Se încarcă locațiile...</div>
-
-        <div v-else class="locations-list">
-          <article
-            v-for="location in locations"
-            :key="location.id"
-            class="location-card"
-            :class="{ active: selectedLocation?.id === location.id }"
-            @click="selectLocation(location)"
-          >
-            <img :src="location.coverImage" :alt="location.title" />
-
-            <div class="location-card-content">
-              <span>{{ location.categoryLabel }}</span>
-              <h3>{{ location.title }}</h3>
-              <p>{{ location.shortDescription }}</p>
-            </div>
-          </article>
-        </div>
-      </aside>
-
-      <section class="map-area" :class="{ 'past-mode': pastMode }">
-        <div ref="mapContainer" class="leaflet-map"></div>
-
-        <div v-if="isHistoricalLoading" class="map-loading-overlay">
-          <div class="loader-card">
-            <v-progress-circular indeterminate color="orange" size="42" width="4" />
-            <div>
-              <strong>Se încarcă harta din {{ activeHistoricalMap.year }}...</strong>
-              <span>Un pic de răbdare, istoria vine cu bagaj mare.</span>
-            </div>
-          </div>
-        </div>
-
-        <div v-if="historicalError" class="historical-error">
-          {{ historicalError }}
-        </div>
-
-        <div v-if="selectedLocation" class="floating-card">
-          <img :src="selectedLocation.coverImage" :alt="selectedLocation.title" />
-
-          <div class="floating-card-content">
-            <span>{{ selectedLocation.period }}</span>
-            <h2>{{ selectedLocation.title }}</h2>
-            <p>{{ selectedLocation.shortDescription }}</p>
-
-            <div class="location-meta">
-              <small>{{ selectedLocation.categoryLabel }}</small>
-              <small>{{ selectedLocation.address }}</small>
+    <section class="map-section">
+      <v-container class="content-wrap">
+        <div class="map-shell">
+          <aside class="map-sidebar">
+            <div class="sidebar-header">
+              <p class="eyebrow">Locații</p>
             </div>
 
-            <div class="floating-actions">
-              <v-btn color="orange" rounded="xl" :to="`/location/${selectedLocation.slug}`">
-                Află mai multe
-              </v-btn>
+            <v-alert v-if="locationsStore.error" type="error" variant="tonal" class="mb-4">
+              {{ locationsStore.error }}
+            </v-alert>
 
-              <v-btn
-                variant="outlined"
-                color="orange"
-                rounded="xl"
-                :loading="isHistoricalLoading && !pastMode"
-                @click="togglePastMode"
+            <div v-if="locationsStore.loading" class="loading-box">Se încarcă locațiile...</div>
+
+            <div v-else class="locations-list">
+              <article
+                v-for="location in locations"
+                :key="location.id"
+                class="location-card"
+                :class="{ active: selectedLocation?.id === location.id }"
+                @click="selectLocation(location)"
               >
-                {{ pastMode ? 'Revino în prezent' : 'Vezi trecutul' }}
-              </v-btn>
+                <img :src="location.coverImage" :alt="location.title" />
+
+                <div class="location-card-content">
+                  <span>{{ location.categoryLabel }}</span>
+                  <h3>{{ location.title }}</h3>
+                  <p>{{ location.shortDescription }}</p>
+                </div>
+              </article>
+            </div>
+          </aside>
+
+          <div v-if="pastMode" class="historical-panel mobile-history-panel">
+            <div class="historical-panel-header">
+              <span>Hartă istorică</span>
+            </div>
+
+            <p>{{ activeHistoricalMap.label }}</p>
+
+            <div class="historical-note">
+              Hărțile istorice pot avea abateri de aliniere față de traseul actual al străzilor.
+            </div>
+
+            <div class="year-slider">
+              <div class="years-row">
+                <button
+                  v-for="(historicalMap, index) in historicalMaps"
+                  :key="historicalMap.year"
+                  type="button"
+                  :class="{ active: activeHistoricalIndex === index }"
+                  :disabled="isHistoricalLoading"
+                  @click="setHistoricalMap(index)"
+                >
+                  <span
+                    v-if="isHistoricalLoading && activeHistoricalIndex === index"
+                    class="mini-loader"
+                  ></span>
+                  <span v-else>{{ historicalMap.year }}</span>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div v-if="pastMode" class="historical-panel">
-          <div class="historical-panel-header">
-            <span>Hartă istorică</span>
-            <strong>{{ activeHistoricalMap.year }}</strong>
-          </div>
+          <section class="map-area" :class="{ 'past-mode': pastMode }">
+            <div ref="mapContainer" class="leaflet-map"></div>
 
-          <p>{{ activeHistoricalMap.label }}</p>
-          <div class="historical-note">
-            Hărțile istorice pot avea abateri de aliniere față de traseul actual al străzilor.
-          </div>
-
-          <div class="year-slider">
-            <div class="years-row">
-              <button
-                v-for="(historicalMap, index) in historicalMaps"
-                :key="historicalMap.year"
-                type="button"
-                :class="{ active: activeHistoricalIndex === index }"
-                :disabled="isHistoricalLoading"
-                @click="setHistoricalMap(index)"
-              >
-                <span
-                  v-if="isHistoricalLoading && activeHistoricalIndex === index"
-                  class="mini-loader"
-                ></span>
-                <span v-else>{{ historicalMap.year }}</span>
-              </button>
+            <div v-if="isHistoricalLoading" class="map-loading-overlay">
+              <div class="loader-card">
+                <v-progress-circular indeterminate color="orange" size="42" width="4" />
+                <div>
+                  <strong>Se încarcă harta din {{ activeHistoricalMap.year }}...</strong>
+                  <span>Un pic de răbdare, istoria vine cu bagaj mare.</span>
+                </div>
+              </div>
             </div>
-          </div>
+
+            <div v-if="historicalError" class="historical-error">
+              {{ historicalError }}
+            </div>
+
+            <div v-if="selectedLocation" class="floating-card">
+              <img :src="selectedLocation.coverImage" :alt="selectedLocation.title" />
+
+              <div class="floating-card-content">
+                <span>{{ selectedLocation.period }}</span>
+                <h2>{{ selectedLocation.title }}</h2>
+                <p class="floating-address">{{ selectedLocation.address }}</p>
+                <p class="floating-description">{{ selectedLocation.shortDescription }}</p>
+
+                <div class="floating-actions">
+                  <v-btn color="orange" rounded="xl" :to="`/location/${selectedLocation.slug}`">
+                    Află mai multe
+                  </v-btn>
+
+                  <v-btn
+                    variant="outlined"
+                    color="orange"
+                    rounded="xl"
+                    :loading="isHistoricalLoading && !pastMode"
+                    @click="togglePastMode"
+                  >
+                    {{ pastMode ? 'Revino în prezent' : 'Vezi trecutul' }}
+                  </v-btn>
+                </div>
+              </div>
+            </div>
+
+            <div v-if="pastMode" class="historical-panel desktop-history-panel">
+              <div class="historical-panel-header">
+                <span>Hartă istorică</span>
+              </div>
+
+              <p>{{ activeHistoricalMap.label }}</p>
+
+              <div class="historical-note">
+                Hărțile istorice pot avea abateri de aliniere față de traseul actual al străzilor.
+              </div>
+
+              <div class="year-slider">
+                <div class="years-row">
+                  <button
+                    v-for="(historicalMap, index) in historicalMaps"
+                    :key="historicalMap.year"
+                    type="button"
+                    :class="{ active: activeHistoricalIndex === index }"
+                    :disabled="isHistoricalLoading"
+                    @click="setHistoricalMap(index)"
+                  >
+                    <span
+                      v-if="isHistoricalLoading && activeHistoricalIndex === index"
+                      class="mini-loader"
+                    ></span>
+                    <span v-else>{{ historicalMap.year }}</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
+      </v-container>
     </section>
   </main>
 </template>
@@ -164,19 +201,20 @@ const historicalMaps = [
     file: '/maps/bucuresti-1939.kmz',
   },
 ]
+
 const locations = computed(() => locationsStore.locations || [])
 const activeHistoricalMap = computed(() => historicalMaps[activeHistoricalIndex.value])
 
 const customIcon = L.divIcon({
   className: 'custom-map-marker',
   html: `
-    <div class="pin">
-      <div class="pin-inner"></div>
+    <div class="map-pin">
+      <div class="map-pin-dot"></div>
     </div>
   `,
-  iconSize: [42, 52],
-  iconAnchor: [21, 52],
-  popupAnchor: [0, -48],
+  iconSize: [34, 44],
+  iconAnchor: [17, 44],
+  popupAnchor: [0, -40],
 })
 
 const initMap = () => {
@@ -189,16 +227,17 @@ const initMap = () => {
     zoomAnimation: false,
     markerZoomAnimation: false,
     fadeAnimation: true,
+    attributionControl: false,
   }).setView([44.43644189808239, 26.12519392594765], 16)
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors',
+    attribution: '',
     maxZoom: 20,
   }).addTo(map.value)
 
   L.control
     .zoom({
-      position: 'bottomright',
+      position: 'topright',
     })
     .addTo(map.value)
 
@@ -240,7 +279,7 @@ const renderMarkers = () => {
 
   if (bounds.length) {
     map.value.fitBounds(bounds, {
-      padding: [60, 60],
+      padding: [70, 70],
       maxZoom: 16,
     })
   }
@@ -255,7 +294,7 @@ const selectLocation = (location) => {
 
   if (map.value) {
     map.value.stop()
-    map.value.setView([location.lat, location.lng], pastMode.value ? 16 : 19, {
+    map.value.setView([location.lat, location.lng], pastMode.value ? 16 : 18, {
       animate: false,
     })
   }
@@ -285,7 +324,7 @@ const togglePastMode = async () => {
 
     if (selectedLocation.value) {
       map.value.stop()
-      map.value.setView([selectedLocation.value.lat, selectedLocation.value.lng], 19, {
+      map.value.setView([selectedLocation.value.lat, selectedLocation.value.lng], 18, {
         animate: false,
       })
     }
@@ -356,7 +395,7 @@ const loadHistoricalKmz = () => {
       }
 
       isHistoricalLoading.value = false
-      historicalError.value = `Nu s-a putut încărca harta din ${activeMap.year}. Verifică dacă fișierul există în public/maps.`
+      historicalError.value = `Nu s-a putut încărca harta din ${activeMap.year}.`
       resolve()
     }
 
@@ -437,85 +476,161 @@ onBeforeUnmount(() => {
 <style scoped>
 .explore-map-page {
   min-height: 100vh;
+  overflow-x: hidden;
   background:
-    radial-gradient(circle at top left, rgba(255, 145, 0, 0.18), transparent 34%),
+    radial-gradient(circle at top left, rgba(255, 145, 0, 0.13), transparent 34%),
     linear-gradient(135deg, #0d0d0d 0%, #17120d 45%, #080808 100%);
   color: #fff;
 }
 
+.content-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1180px;
+}
+
 .map-hero {
-  padding: 96px 7vw 40px;
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0 44px;
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(12px);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.hero-glow-one {
+  width: 260px;
+  height: 260px;
+  top: 80px;
+  right: 12%;
+  background: rgba(255, 138, 0, 0.16);
+}
+
+.hero-glow-two {
+  width: 160px;
+  height: 160px;
+  bottom: 20px;
+  left: 8%;
+  background: rgba(234, 88, 12, 0.12);
 }
 
 .hero-content {
-  max-width: 780px;
+  max-width: 850px;
 }
 
-.eyebrow {
+.eyebrow,
+.hero-content .eyebrow {
   margin-bottom: 12px;
   color: #ff9800;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .map-hero h1 {
-  margin-bottom: 18px;
+  max-width: 860px;
+  margin: 0 0 18px;
+  color: #f5f5f5;
   font-size: clamp(2.4rem, 6vw, 5rem);
-  line-height: 0.95;
+  line-height: 0.96;
+  letter-spacing: -0.06em;
 }
 
 .map-hero p {
-  max-width: 640px;
-  color: rgba(255, 255, 255, 0.74);
+  max-width: 680px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
   font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.map-section {
+  padding: 24px 0 90px;
 }
 
 .map-shell {
   display: grid;
-  grid-template-columns: 380px minmax(0, 1fr);
+  grid-template-columns: 330px minmax(0, 1fr);
   gap: 24px;
-  padding: 24px 7vw 80px;
+  align-items: stretch;
 }
 
 .map-sidebar {
+  max-height: 720px;
+  overflow: hidden;
   border: 1px solid rgba(255, 152, 0, 0.18);
   border-radius: 32px;
-  background: rgba(18, 18, 18, 0.72);
+  background: rgba(18, 18, 18, 0.74);
+  padding: 24px 18px 24px 24px;
   backdrop-filter: blur(18px);
-  padding: 24px;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
+}
+
+.sidebar-header {
+  padding-right: 14px;
 }
 
 .sidebar-header h2 {
-  margin-bottom: 22px;
-  font-size: 1.8rem;
+  margin: 0 0 22px;
+  color: #f5f5f5;
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
 }
 
 .loading-box {
+  margin-right: 14px;
   border: 1px solid rgba(255, 152, 0, 0.18);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.045);
   padding: 18px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .locations-list {
   display: grid;
+  max-height: 605px;
+  overflow-y: auto;
   gap: 16px;
+  padding: 4px 14px 4px 0;
+  scrollbar-gutter: stable;
+}
+
+.locations-list::-webkit-scrollbar {
+  width: 7px;
+}
+
+.locations-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+}
+
+.locations-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 138, 0, 0.6);
+  border-radius: 999px;
 }
 
 .location-card {
   display: grid;
-  grid-template-columns: 96px 1fr;
-  gap: 14px;
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 13px;
+  min-width: 0;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 152, 0, 0.14);
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.045);
   cursor: pointer;
-  transition: 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
 }
 
 .location-card:hover,
@@ -526,23 +641,30 @@ onBeforeUnmount(() => {
 }
 
 .location-card img {
-  width: 96px;
-  height: 96px;
+  width: 86px;
+  height: 86px;
   border-radius: 18px;
   object-fit: cover;
   filter: saturate(0.85) contrast(1.05);
 }
 
+.location-card-content {
+  min-width: 0;
+  overflow: hidden;
+}
+
 .location-card-content span,
 .floating-card-content span {
   color: #ffb74d;
-  font-size: 0.76rem;
-  font-weight: 700;
+  font-size: 0.74rem;
+  font-weight: 800;
 }
 
 .location-card-content h3 {
   margin: 6px 0;
-  font-size: 1rem;
+  color: #f5f5f5;
+  font-size: 0.98rem;
+  line-height: 1.15;
 }
 
 .location-card-content p {
@@ -550,25 +672,26 @@ onBeforeUnmount(() => {
   margin: 0;
   overflow: hidden;
   color: rgba(255, 255, 255, 0.68);
-  font-size: 0.86rem;
+  font-size: 0.84rem;
+  line-height: 1.42;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
 
 .map-area {
   position: relative;
-  min-height: 680px;
+  min-height: 720px;
   overflow: hidden;
   border: 1px solid rgba(255, 152, 0, 0.2);
-  border-radius: 36px;
+  border-radius: 32px;
   background: #111;
-  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.42);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.42);
 }
 
 .leaflet-map {
   width: 100%;
   height: 100%;
-  min-height: 680px;
+  min-height: 720px;
   z-index: 1;
   transition: 0.5s ease;
 }
@@ -584,20 +707,20 @@ onBeforeUnmount(() => {
   display: grid;
   place-items: center;
   pointer-events: none;
-  background: rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(1.5px);
 }
 
 .loader-card {
   display: flex;
   align-items: center;
-  gap: 16px;
-  max-width: 420px;
-  border: 1px solid rgba(255, 183, 77, 0.34);
-  border-radius: 24px;
-  background: rgba(18, 12, 6, 0.88);
-  padding: 18px 20px;
-  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
+  gap: 14px;
+  max-width: 360px;
+  border: 1px solid rgba(255, 183, 77, 0.3);
+  border-radius: 22px;
+  background: rgba(18, 12, 6, 0.86);
+  padding: 15px 17px;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.42);
 }
 
 .loader-card div {
@@ -607,12 +730,12 @@ onBeforeUnmount(() => {
 
 .loader-card strong {
   color: #fff;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .loader-card span {
   color: rgba(255, 255, 255, 0.68);
-  font-size: 0.84rem;
+  font-size: 0.8rem;
 }
 
 .historical-error {
@@ -632,74 +755,85 @@ onBeforeUnmount(() => {
 
 .floating-card {
   position: absolute;
-  left: 28px;
-  bottom: 28px;
+  left: 22px;
+  bottom: 22px;
   z-index: 500;
   display: grid;
-  grid-template-columns: 180px 1fr;
-  width: min(660px, calc(100% - 56px));
+  grid-template-columns: 118px minmax(0, 1fr);
+  width: min(475px, calc(100% - 44px));
   overflow: hidden;
   border: 1px solid rgba(255, 152, 0, 0.24);
-  border-radius: 28px;
-  background: rgba(13, 13, 13, 0.82);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
+  border-radius: 24px;
+  background: rgba(13, 13, 13, 0.84);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.52);
   animation: cardIn 0.35s ease;
 }
 
 .floating-card img {
   width: 100%;
   height: 100%;
-  min-height: 250px;
+  min-height: 172px;
   object-fit: cover;
   transition: 0.35s ease;
 }
 
 .floating-card-content {
-  padding: 22px;
+  min-width: 0;
+  padding: 16px;
 }
 
 .floating-card-content h2 {
-  margin: 6px 0 10px;
-  font-size: 1.5rem;
+  margin: 5px 0 8px;
+  color: #f5f5f5;
+  font-size: 1.16rem;
+  line-height: 1.1;
 }
 
 .floating-card-content p {
-  margin-bottom: 14px;
+  display: -webkit-box;
+  margin: 0 0 9px;
+  overflow: hidden;
   color: rgba(255, 255, 255, 0.72);
+  font-size: 0.84rem;
+  line-height: 1.42;
+  -webkit-box-orient: vertical;
 }
 
-.location-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 18px;
+.floating-address {
+  color: #ffb74d !important;
+  font-weight: 700;
+  -webkit-line-clamp: 1;
 }
 
-.location-meta small {
-  border: 1px solid rgba(255, 152, 0, 0.22);
-  border-radius: 999px;
-  background: rgba(255, 152, 0, 0.08);
-  padding: 6px 10px;
-  color: rgba(255, 255, 255, 0.76);
+.floating-description {
+  -webkit-line-clamp: 2;
 }
 
 .floating-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.floating-actions :deep(.v-btn) {
+  min-height: 36px;
+  padding-inline: 13px;
+  font-size: 0.78rem;
+  font-weight: 800;
 }
 
 .historical-panel {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 20px;
+  right: 20px;
   z-index: 700;
-  width: min(360px, calc(100% - 48px));
+  width: min(310px, calc(100% - 40px));
   border: 1px solid rgba(255, 183, 77, 0.32);
-  border-radius: 24px;
+  border-radius: 22px;
   background: rgba(18, 12, 6, 0.84);
-  padding: 18px;
+  padding: 16px;
   backdrop-filter: blur(18px);
   box-shadow: 0 18px 55px rgba(0, 0, 0, 0.42);
   animation: cardIn 0.3s ease;
@@ -712,20 +846,9 @@ onBeforeUnmount(() => {
   gap: 12px;
 }
 
-.historical-note {
-  margin: -6px 0 16px;
-  border: 1px solid rgba(255, 183, 77, 0.22);
-  border-radius: 16px;
-  background: rgba(255, 152, 0, 0.08);
-  padding: 10px 12px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.78rem;
-  line-height: 1.35;
-}
-
 .historical-panel-header span {
   color: #ffb74d;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -733,29 +856,30 @@ onBeforeUnmount(() => {
 
 .historical-panel-header strong {
   color: #fff;
-  font-size: 1.55rem;
+  font-size: 1.4rem;
 }
 
 .historical-panel p {
-  margin: 8px 0 18px;
+  margin: 8px 0 14px;
   color: rgba(255, 255, 255, 0.74);
-  font-size: 0.9rem;
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.historical-note {
+  margin: -4px 0 14px;
+  border: 1px solid rgba(255, 183, 77, 0.22);
+  border-radius: 15px;
+  background: rgba(255, 152, 0, 0.08);
+  padding: 9px 11px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.74rem;
+  line-height: 1.35;
 }
 
 .year-slider {
   display: grid;
   gap: 12px;
-  margin-bottom: 18px;
-}
-
-.year-slider input {
-  width: 100%;
-  accent-color: #ff9800;
-}
-
-.year-slider input:disabled {
-  opacity: 0.5;
-  cursor: wait;
 }
 
 .years-row {
@@ -765,13 +889,13 @@ onBeforeUnmount(() => {
 }
 
 .years-row button {
-  min-width: 58px;
+  min-width: 56px;
   border: 1px solid rgba(255, 152, 0, 0.22);
   border-radius: 999px;
   background: rgba(255, 152, 0, 0.08);
-  padding: 7px 11px;
+  padding: 7px 10px;
   color: rgba(255, 255, 255, 0.76);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 800;
   cursor: pointer;
   transition: 0.22s ease;
@@ -799,33 +923,8 @@ onBeforeUnmount(() => {
   animation: spin 0.7s linear infinite;
 }
 
-:deep(.custom-map-marker) {
-  display: grid;
-  place-items: center;
-}
-
-:deep(.custom-map-marker .pin) {
-  position: relative;
-  width: 34px;
-  height: 34px;
-  border: 3px solid #fff3e0;
-  border-radius: 50% 50% 50% 0;
-  background: linear-gradient(135deg, #ffb74d, #ff6d00);
-  box-shadow:
-    0 0 0 8px rgba(255, 152, 0, 0.18),
-    0 10px 28px rgba(255, 109, 0, 0.55);
-  transform: rotate(-45deg);
-}
-
-:deep(.custom-map-marker .pin-inner) {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #111;
-  transform: translate(-50%, -50%);
+:deep(.leaflet-control-attribution) {
+  display: none !important;
 }
 
 :deep(.leaflet-popup-content-wrapper) {
@@ -855,6 +954,75 @@ onBeforeUnmount(() => {
   font-size: 0.82rem;
 }
 
+:deep(.custom-map-marker) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  border: none !important;
+}
+
+:deep(.map-pin) {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: #ff8a00;
+  border: 3px solid #111;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 5px 11px rgba(0, 0, 0, 0.42);
+}
+
+:deep(.map-pin-dot) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: #111;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+:deep(.leaflet-top.leaflet-right) {
+  top: auto;
+  right: 16px;
+  bottom: 16px;
+}
+
+:deep(.leaflet-control-zoom) {
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(255, 152, 0, 0.32) !important;
+  border-radius: 16px !important;
+  background: rgba(18, 18, 18, 0.88) !important;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.38);
+}
+
+:deep(.leaflet-control-zoom a) {
+  width: 42px !important;
+  height: 42px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #ffb74d !important;
+  font-size: 1.35rem !important;
+  line-height: 42px !important;
+  font-weight: 900 !important;
+}
+
+:deep(.leaflet-control-zoom a:hover) {
+  color: #ffb74d !important;
+}
+
+.mobile-history-panel {
+  display: none;
+}
+
+.desktop-history-panel {
+  display: block;
+}
+
 @keyframes cardIn {
   from {
     opacity: 0;
@@ -873,28 +1041,59 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1180px) {
   .map-shell {
     grid-template-columns: 1fr;
   }
 
   .map-sidebar {
     order: 2;
+    max-height: none;
+  }
+
+  .locations-list {
+    max-height: none;
+    padding-right: 0;
   }
 
   .map-area,
   .leaflet-map {
-    min-height: 620px;
+    min-height: 640px;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .map-hero {
-    padding: 72px 20px 24px;
+    padding: 74px 0 28px;
+  }
+
+  .content-wrap {
+    padding-inline: 20px;
+  }
+
+  .eyebrow {
+    font-size: 1.1rem;
+    letter-spacing: 0.14em;
+  }
+
+  .map-hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.45rem, 12vw, 3.7rem);
+    line-height: 0.98;
+  }
+
+  .map-hero p {
+    max-width: 100%;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .map-section {
+    padding: 20px 0 64px;
   }
 
   .map-shell {
-    padding: 20px 20px 56px;
+    gap: 18px;
   }
 
   .map-sidebar {
@@ -902,10 +1101,37 @@ onBeforeUnmount(() => {
     padding: 18px;
   }
 
+  .sidebar-header,
+  .loading-box {
+    padding-right: 0;
+    margin-right: 0;
+  }
+
   .map-area,
   .leaflet-map {
     min-height: 560px;
-    border-radius: 28px;
+    border-radius: 26px;
+  }
+
+  .locations-list {
+    gap: 14px;
+    padding: 2px;
+  }
+
+  .location-card {
+    grid-template-columns: 82px minmax(0, 1fr);
+    gap: 12px;
+    padding: 11px;
+  }
+
+  .location-card:hover,
+  .location-card.active {
+    transform: none;
+  }
+
+  .location-card img {
+    width: 82px;
+    height: 82px;
   }
 
   .map-loading-overlay {
@@ -914,6 +1140,7 @@ onBeforeUnmount(() => {
   }
 
   .loader-card {
+    max-width: calc(100% - 28px);
     margin: 0 14px;
   }
 
@@ -925,39 +1152,146 @@ onBeforeUnmount(() => {
   }
 
   .floating-card {
-    left: 14px;
-    bottom: 14px;
-    grid-template-columns: 1fr;
-    width: calc(100% - 28px);
+    left: 12px;
+    bottom: 12px;
+    grid-template-columns: 92px minmax(0, 1fr);
+    width: calc(100% - 24px);
+    border-radius: 22px;
   }
 
   .floating-card img {
-    height: 145px;
-    min-height: 145px;
+    min-height: 142px;
   }
 
   .floating-card-content {
-    padding: 18px;
+    padding: 13px;
   }
 
   .floating-card-content h2 {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
   }
 
-  .historical-panel {
-    top: 14px;
-    right: 14px;
-    left: 14px;
-    width: auto;
+  .floating-card-content p {
+    margin-bottom: 7px;
+    font-size: 0.78rem;
+  }
+
+  .floating-description {
+    -webkit-line-clamp: 1;
+  }
+
+  .floating-actions {
+    gap: 7px;
+  }
+
+  .floating-actions :deep(.v-btn) {
+    flex: 1 1 auto;
+    min-height: 34px;
+    padding-inline: 10px;
+    font-size: 0.72rem;
+  }
+
+  .desktop-history-panel {
+    display: none;
+  }
+
+  .mobile-history-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    margin-bottom: 14px;
+  }
+
+  :deep(.leaflet-top.leaflet-right) {
+    top: 16px;
+    right: 16px;
+    bottom: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .content-wrap {
+    padding-inline: 16px;
+  }
+
+  .map-hero {
+    padding: 58px 0 24px;
+  }
+
+  .map-section {
+    padding: 18px 0 56px;
+  }
+
+  .map-hero h1 {
+    font-size: clamp(2.25rem, 13vw, 3rem);
+  }
+
+  .hero-glow-one {
+    width: 210px;
+    height: 210px;
+    right: -70px;
+  }
+
+  .hero-glow-two {
+    width: 140px;
+    height: 140px;
+    left: -50px;
+  }
+
+  .map-area,
+  .leaflet-map {
+    min-height: 520px;
+  }
+
+  .map-sidebar {
+    padding: 16px;
   }
 
   .location-card {
-    grid-template-columns: 84px 1fr;
+    grid-template-columns: 74px minmax(0, 1fr);
+    gap: 11px;
+    border-radius: 20px;
   }
 
   .location-card img {
-    width: 84px;
-    height: 84px;
+    width: 74px;
+    height: 74px;
+    border-radius: 16px;
+  }
+
+  .location-card-content p {
+    -webkit-line-clamp: 1;
+  }
+
+  .floating-card {
+    grid-template-columns: 1fr;
+    width: calc(100% - 24px);
+  }
+
+  .floating-card img {
+    height: 92px;
+    min-height: 92px;
+  }
+
+  .floating-description {
+    display: none !important;
+  }
+
+  .floating-actions {
+    flex-direction: column;
+  }
+
+  .floating-actions :deep(.v-btn) {
+    width: 100%;
+    min-height: 36px;
+  }
+
+  .historical-panel {
+    width: 100%;
   }
 }
 </style>

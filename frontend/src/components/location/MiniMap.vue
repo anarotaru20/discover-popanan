@@ -179,7 +179,7 @@ onBeforeUnmount(() => {
   background: #ff8a00;
   border-radius: 50% 50% 50% 0;
   transform: rotate(-45deg);
-  border: 2px solid #0f0f0f;
+  border: 3px solid #0f0f0f;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
 }
 
@@ -211,6 +211,31 @@ onBeforeUnmount(() => {
 
 :deep(.leaflet-control-attribution) {
   display: none;
+}
+
+:deep(.leaflet-control-zoom) {
+  overflow: hidden;
+  border: 1px solid rgba(255, 152, 0, 0.32) !important;
+  border-radius: 16px !important;
+  background: rgba(18, 18, 18, 0.88) !important;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.38);
+}
+
+:deep(.leaflet-control-zoom a) {
+  width: 42px !important;
+  height: 42px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #ffb74d !important;
+  font-size: 1.35rem !important;
+  line-height: 42px !important;
+  font-weight: 900 !important;
+}
+
+:deep(.leaflet-control-zoom a:hover) {
+  background: rgba(255, 152, 0, 0.12) !important;
+  color: #ffb74d !important;
 }
 
 @media (max-width: 700px) {
