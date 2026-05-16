@@ -2,7 +2,7 @@
   <section class="before-after-section">
     <div class="section-header">
       <p class="eyebrow">Atunci vs. acum</p>
-      <h2>{{ title || 'Compară trecutul cu prezentul' }}</h2>
+      <!-- <h2>{{ 'Atunci vs. Acum' }}</h2> -->
       <p class="section-description">
         Trage de slider pentru a vedea diferența dintre imaginea veche și cea actuală.
       </p>
@@ -72,7 +72,7 @@ const sliderValue = ref(50)
   color: #ff8a00;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  font-size: 0.78rem;
+  font-size: 1.30rem;
   font-weight: 700;
   margin-bottom: 8px;
 }
