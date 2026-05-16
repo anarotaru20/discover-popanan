@@ -9,7 +9,7 @@
           <RouterLink to="/contributions" class="community-link"> arhiva comunitară. </RouterLink>
         </p>
 
-        <v-btn class="section-btn" color="orange" size="large" rounded="xl" @click="openFormDialog">
+        <v-btn class="section-btn" color="orange" size="large" rounded="xl" @click="openFormDialog" style="font-weight: 700;">
           Adaugă comentariu
         </v-btn>
       </div>
