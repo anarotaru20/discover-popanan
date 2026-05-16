@@ -363,6 +363,8 @@ onMounted(async () => {
 
 .details-btn {
   min-height: 44px;
+  background: linear-gradient(135deg, #ff8a00, #ea580c);
+
 }
 
 @media (max-width: 1180px) {
