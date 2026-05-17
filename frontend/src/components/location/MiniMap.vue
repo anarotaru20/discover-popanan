@@ -68,7 +68,8 @@ const initMap = () => {
 
   map = L.map(mapElement.value, {
     zoomControl: true,
-    scrollWheelZoom: window.innerWidth > 700,
+    // scrollWheelZoom: window.innerWidth > 700,
+    scrollWheelZoom: false,
     attributionControl: false,
     maxZoom: 19,
   }).setView(position, getZoomByScreen())
