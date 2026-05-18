@@ -8,11 +8,11 @@
         <div class="hero-content">
           <div class="eyebrow">Tururi ghidate</div>
 
-          <h1>Explorează Popa Nan prin trasee cu poveste</h1>
+          <h1>Descoperă Popa Nan prin trasee cu poveste</h1>
 
           <p>
-            Alege un tur tematic și descoperă strada prin repere istorice, case vechi, industrie,
-            memorie urbană și povești ale comunității.
+            Explorează Popa Nan prin trasee tematice care leagă patrimoniul, memoria urbană și
+            fragmentele unei lumi încă ascunse printre clădirile orașului.
           </p>
         </div>
       </v-container>
@@ -52,7 +52,7 @@
             <div class="tour-content">
               <h3>{{ tour.title }}</h3>
 
-              <p>{{ tour.shortDescription }}</p>
+              <p style="text-align: justify">{{ tour.shortDescription }}</p>
 
               <div class="tour-meta">
                 <span>
