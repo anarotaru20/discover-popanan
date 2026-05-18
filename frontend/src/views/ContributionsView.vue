@@ -290,8 +290,7 @@
       <v-card rounded="xl" class="dialog-card">
         <v-card-title>
           <div>
-            <p class="eyebrow">Contribuie</p>
-            <h2>Adaugă o contribuție</h2>
+            <p class="eyebrow">Adaugă o contribuție</p>
           </div>
 
           <v-btn icon variant="text" @click="closeFormDialog">
