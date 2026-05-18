@@ -631,9 +631,9 @@ h1 {
 
 @media (max-width: 768px) {
   .hero {
-    min-height: calc(100svh - 56px);
+    min-height: calc(100svh - 356px);
     align-items: center;
-    padding: 42px 0 40px;
+    padding: 42px 0 0px;
     background:
       linear-gradient(90deg, rgba(15, 15, 15, 0.9), rgba(15, 15, 15, 0.52), rgba(15, 15, 15, 0.82)),
       radial-gradient(circle at 72% 42%, rgba(255, 138, 0, 0.36), transparent 34%),
@@ -681,7 +681,7 @@ h1 {
   }
 
   .section {
-    padding: 64px 0;
+    padding: 15px 0;
   }
 
   .section-head {
@@ -805,7 +805,7 @@ h1 {
   }
 
   .section {
-    padding: 56px 0;
+    padding: 46px 0;
   }
 
   h1 {
