@@ -116,21 +116,6 @@ module.exports = [
     "investment opportunity",
     "100% profit",
 
-    // linkuri / phishing
-    "http://",
-    "https://",
-    "www.",
-    ".ru",
-    ".xyz",
-    ".click",
-    "bit.ly",
-    "tinyurl",
-    "grabify",
-    "discord.gg",
-    "t.me/",
-    "wa.me/",
-    "@gmail.com",
-
     // adult
     "porn",
     "xxx",

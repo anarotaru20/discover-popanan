@@ -6,7 +6,7 @@ function normalizeText(value) {
 
 function countLinks(text) {
   const matches = String(text || "").match(
-    /(https?:\/\/|www\.|bit\.ly|tinyurl|t\.me\/|discord\.gg|wa\.me\/)/gi
+    /\b(?:https?:\/\/)?(?:www\.)?[a-z0-9.-]+\.[a-z]{2,}(?:\/[^\s]*)?/gi
   );
 
   return matches ? matches.length : 0;
