@@ -7,8 +7,8 @@
     "duration": "35 min",
     "distance": "1.8 km",
     "difficulty": "ușor",
-    "shortDescription": "Un traseu introductiv prin cele mai importante repere istorice și culturale ale străzii Popa Nan.",
-    "description": "Acest tur este gândit ca o primă întâlnire cu strada Popa Nan. Traseul leagă biserica, reședințele istorice, spațiile industriale și memoria culturală a zonei într-o experiență scurtă, ușor de parcurs pe jos.",
+    "shortDescription": "Un traseu prin memoria ascunsă a străzii Popa Nan, printre case vechi, fabrici, muzică și povești ale Bucureștiului de altădată.",
+    "description": "Acest traseu este o călătorie prin memoria ascunsă a străzii Popa Nan - un loc unde biserica, reședințele istorice, spațiile industriale și poveștile orașului coexistă încă printre clădirile de azi. Fiecare oprire păstrează urmele unui alt București: unul al mahalalelor liniștite, al atelierelor, al muzicii pe vinil și al vieții de cartier care s-a schimbat fără să dispară complet. Turul te invită să descoperi strada pas cu pas, ca pe o arhivă vie a orașului, unde fiecare colț pare să păstreze ceva nespus.",
     "coverImage": "/images/tours/memoria-strazii.jpg",
     "audioIntro": "/audio/tours/memoria-strazii-intro.mp3",
     "color": "#FF8A00",
@@ -18,13 +18,14 @@
         "audio": "/audio/biserica-popa-nan.mp3"
       },
       {
-        "slug": "casa-popa-nan-32",
-        "audio": "/audio/casa-popa-nan-32.mp3"
-      },
-      {
         "slug": "casa-gheorghe-braescu",
         "audio": "/audio/casa-gheorghe-braescu.mp3"
       },
+      {
+        "slug": "casa-popa-nan-32",
+        "audio": "/audio/casa-popa-nan-32.mp3"
+      },
+
       {
         "slug": "electrecord-popa-nan",
         "audio": "/audio/electrecord-popa-nan.mp3"
@@ -43,45 +44,48 @@
     "duration": "25 min",
     "distance": "1.2 km",
     "difficulty": "ușor",
-    "shortDescription": "O plimbare prin atmosfera Bucureștiului interbelic, cu locuințe vechi, cultură urbană și povești literare.",
-    "description": "Turul urmărește urmele perioadei interbelice de pe strada Popa Nan: case vechi, detalii arhitecturale și locuri asociate cu viața culturală a orașului. Este o rută potrivită pentru cei interesați de Bucureștiul discret, elegant și încă vizibil printre clădirile actuale.",
+    "shortDescription": "Un traseu prin Bucureștiul interbelic ascuns printre case vechi, străzi liniștite și urmele unei lumi elegante de altădată.",
+    "description": "Acest tur urmărește atmosfera Bucureștiului interbelic care încă supraviețuiește pe strada Popa Nan, printre fațade vechi, detalii arhitecturale și locuri încărcate de memorie urbană. Traseul vorbește despre un oraș discret și elegant, despre viața culturală a epocii și despre fragmentele unui București care continuă să existe, aproape ascuns, printre clădirile și ritmul orașului de azi.",
     "coverImage": "/images/tours/popa-nan-interbelic.jpg",
     "audioIntro": "/audio/tours/popa-nan-interbelic-intro.mp3",
     "color": "#D97706",
-    "stops": ["biserica-popa-nan", "casa-popa-nan-32", "casa-gheorghe-braescu"]
+    "stops": [
+      {
+        "slug": "biserica-popa-nan",
+        "audio": "/audio/biserica-popa-nan.mp3"
+      },
+      {
+        "slug": "casa-gheorghe-braescu",
+        "audio": "/audio/casa-gheorghe-braescu.mp3"
+      },
+      {
+        "slug": "casa-popa-nan-32",
+        "audio": "/audio/casa-popa-nan-32.mp3"
+      }
+    ]
   },
   {
     "id": 3,
-    "slug": "fabrici-si-mahalale",
-    "title": "Fabrici și Mahalale Dispărute",
+    "slug": "fabrici-si-memorie-urbana",
+    "title": "Fabrici și Memorie Urbană",
     "theme": "industrial",
     "duration": "30 min",
     "distance": "1.5 km",
     "difficulty": "ușor",
-    "shortDescription": "Un traseu despre trecutul industrial al zonei și transformarea spațiilor de producție în locuri creative.",
-    "description": "Acest tur pornește de la memoria industrială a străzii Popa Nan și arată cum fabricile, atelierele și spațiile utilitare au modelat viața cartierului. Traseul pune accent pe transformarea locurilor: de la producție și muncă, la cultură, muzică și reconversie creativă.",
-    "coverImage": "/images/tours/fabrici-si-mahalale.jpg",
-    "audioIntro": "/audio/tours/fabrici-si-mahalale-intro.mp3",
+    "shortDescription": "O călătorie prin memoria industrială a străzii Popa Nan, printre fabrici, muzică pe vinil și urmele unui cartier aflat în transformare.",
+    "description": "Acest tur explorează trecutul industrial și cultural al străzii Popa Nan, urmărind locurile unde producția, munca și viața urbană au modelat identitatea cartierului. De la fabrici și ateliere, până la spații legate de muzică și reconversie creativă, traseul dezvăluie felul în care memoria industrială a orașului continuă să existe sub forme noi, ascunsă printre clădirile și ritmul Bucureștiului contemporan.",
+    "coverImage": "/images/tours/fabrici-si-memorie-urbana.jpg",
+    "audioIntro": "/audio/tours/fabrici-si-memorie-urbana-intro.mp3",
     "color": "#EA580C",
-    "stops": ["electrecord-popa-nan", "fabrica-de-matase-popa-nan"]
-  },
-  {
-    "id": 4,
-    "slug": "urmele-comunismului",
-    "title": "Urmele Comunismului",
-    "theme": "comunism",
-    "duration": "20 min",
-    "distance": "1 km",
-    "difficulty": "ușor",
-    "shortDescription": "Un traseu despre industrie, sistematizare, muzică și supraviețuirea reperelor locale în perioada comunistă.",
-    "description": "Turul urmărește felul în care perioada comunistă a schimbat strada Popa Nan: naționalizări, industrie, producție culturală controlată și transformări urbane. În centru se află locuri care au supraviețuit sau au primit funcții noi în această perioadă.",
-    "coverImage": "/images/tours/urmele-comunismului.jpg",
-    "audioIntro": "/audio/tours/urmele-comunismului-intro.mp3",
-    "color": "#F97316",
     "stops": [
-      "biserica-popa-nan",
-      "electrecord-popa-nan",
-      "fabrica-de-matase-popa-nan"
+      {
+        "slug": "electrecord-popa-nan",
+        "audio": "/audio/electrecord-popa-nan.mp3"
+      },
+      {
+        "slug": "fabrica-de-matase-popa-nan",
+        "audio": "/audio/fabrica-de-matase-popa-nan.mp3"
+      }
     ]
   }
 ]
