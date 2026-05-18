@@ -133,17 +133,17 @@ const form = reactive({
 const formError = ref('')
 
 const nameRules = [
-  (value) => !!value?.trim() || 'Toate câmpurile trebuie completate.',
-  (value) => value.trim().length >= 2 || 'Numele trebuie să conțină cel puțin 2 caractere.',
+  (value) => !!value?.trim() || 'Câmp obligatoriu',
+  (value) => value.trim().length >= 3 || 'Numele trebuie să conțină cel puțin 3 caractere',
 ]
 
 const messageRules = [
-  (value) => !!value?.trim() || 'Toate câmpurile trebuie completate.',
-  (value) => value.trim().length >= 10 || 'Mesajul trebuie să conțină cel puțin 10 caractere.',
+  (value) => !!value?.trim() || 'Câmp obligatoriu',
+  (value) => value.trim().length >= 10 || 'Mesajul trebuie să conțină cel puțin 10 caractere',
 ]
 
 const canSubmit = computed(() => {
-  return form.name.trim().length >= 2 && form.message.trim().length >= 10
+  return form.name.trim().length >= 3 && form.message.trim().length >= 10
 })
 
 const loadComments = () => {
@@ -170,17 +170,17 @@ const submitComment = async () => {
   formError.value = ''
 
   if (!form.name.trim() || !form.message.trim()) {
-    formError.value = 'Toate câmpurile trebuie completate.'
+    formError.value = 'Câmp obligatoriu'
     return
   }
 
-  if (form.name.trim().length < 2) {
-    formError.value = 'Numele trebuie să conțină cel puțin 2 caractere.'
+  if (form.name.trim().length <3) {
+    formError.value = 'Numele trebuie să conțină cel puțin 3 caractere'
     return
   }
 
   if (form.message.trim().length < 10) {
-    formError.value = 'Mesajul trebuie să conțină cel puțin 10 caractere.'
+    formError.value = 'Mesajul trebuie să conțină cel puțin 10 caractere'
     return
   }
 
