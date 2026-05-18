@@ -10,9 +10,9 @@
 
           <h1>Harta interactivă Popa Nan</h1>
 
-          <p>
-            Descoperă locurile importante de pe traseu, poveștile lor și legătura dintre Bucureștiul
-            de azi și memoria orașului vechi.
+          <p style="text-align: justify">
+            Fiecare punct de pe hartă deschide o poveste despre oameni, clădiri și urmele unui
+            București care încă respiră prin străzile sale vechi.
           </p>
         </div>
       </v-container>
@@ -222,7 +222,7 @@ const initMap = () => {
 
   map.value = L.map(mapContainer.value, {
     zoomControl: false,
-    scrollWheelZoom: true,
+    scrollWheelZoom: false,
     maxZoom: 20,
     zoomAnimation: false,
     markerZoomAnimation: false,
@@ -493,7 +493,7 @@ onBeforeUnmount(() => {
 .map-hero {
   position: relative;
   overflow: hidden;
-  padding: 100px 0 44px;
+  padding: 100px 0 0px;
 }
 
 .hero-glow {
@@ -521,7 +521,7 @@ onBeforeUnmount(() => {
 }
 
 .hero-content {
-  max-width: 850px;
+  max-width: 1050px;
 }
 
 .eyebrow,
@@ -1064,7 +1064,7 @@ onBeforeUnmount(() => {
 
 @media (max-width: 768px) {
   .map-hero {
-    padding: 74px 0 28px;
+    padding: 74px 0 0px;
   }
 
   .content-wrap {
