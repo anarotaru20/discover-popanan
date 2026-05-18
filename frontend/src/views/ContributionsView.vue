@@ -10,9 +10,9 @@
 
           <h1>Contribuții din comunitate</h1>
 
-          <p>
-            Un spațiu deschis pentru amintiri, corecții, fotografii vechi, surse noi și mesaje
-            despre strada Popa Nan și locurile ei.
+          <p style="text-align: justify">
+            Un loc unde memoria străzii continuă prin poveștile oamenilor, fotografii vechi și
+            fragmente de oraș păstrate de comunitate.
           </p>
 
           <div class="hero-actions">
@@ -231,6 +231,7 @@
               color="orange"
               rounded="xl"
               variant="flat"
+              style="font-weight: 800"
             >
               Vezi sursa
             </v-btn>
@@ -301,12 +302,13 @@
         <v-card-text>
           <v-form ref="formRef" v-model="formValid" @submit.prevent="submitContribution">
             <v-row>
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="12">
                 <v-text-field
                   v-model="form.name"
                   label="Nume"
                   variant="outlined"
-                  :rules="[rules.required]"
+                  :counter="40"
+                  :rules="[rules.required, rules.minName]"
                 />
               </v-col>
 
@@ -334,7 +336,7 @@
                 />
               </v-col>
 
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="12">
                 <v-text-field v-model="form.sourceUrl" label="Link sursă" variant="outlined" />
               </v-col>
 
@@ -386,6 +388,7 @@
                   label="Mesaj"
                   variant="outlined"
                   rows="6"
+                  :counter="400"
                   auto-grow
                   :rules="[rules.required, rules.minMessage]"
                 />
@@ -452,6 +455,8 @@ const contributionTypes = [
 
 const rules = {
   required: (value) => !!value || 'Câmp obligatoriu',
+  minName: (value) =>
+    String(value || '').length >= 3 || 'Numele trebuie să aibă minim 3 caractere',
   minMessage: (value) =>
     String(value || '').length >= 10 || 'Mesajul trebuie să aibă minim 10 caractere',
   maxImages: (value) => {
