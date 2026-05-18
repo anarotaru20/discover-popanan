@@ -55,7 +55,6 @@
       <v-container class="content-container">
         <section class="story-section">
           <p class="eyebrow">Istoria din spatele locului</p>
-          <!-- <h2>Istoria din spatele locului</h2> -->
 
           <p class="story-text">
             {{ location.fullDescription || 'Povestea completă va fi adăugată în curând.' }}
@@ -111,9 +110,7 @@
           :address="location.address"
         />
 
-        <!-- <Contributions v-if="location?.id" :location-id="location.id" /> -->
-
-        <Comments v-if="location?.id" :location-id="location.id" />
+        <Comments v-if="location?.slug" :location-id="location.slug" />
       </v-container>
     </template>
 
@@ -130,9 +127,7 @@ import { computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useLocationsStore } from '@/stores/locations'
 import Comments from '@/components/location/Comments.vue'
-import Contributions from '@/components/location/Contributions.vue'
 import Gallery from '@/components/location/Gallery.vue'
-import Audio from '@/components/location/Audio.vue'
 import BeforeAfter from '@/components/location/BeforeAfter.vue'
 import MiniMap from '@/components/location/MiniMap.vue'
 
