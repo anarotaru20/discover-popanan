@@ -9,8 +9,8 @@
     "period": "1719 / 1910–1918",
     "lat": 44.43644189808239,
     "lng": 26.12519392594765,
-    "shortDescription": "Biserică neoromânească impunătoare, considerată punctul central al zonei Popa Nan.",
-    "fullDescription": "Biserica Popa Nan este unul dintre reperele importante ale străzii, atât prin vechimea locului, cât și prin rolul său în identitatea cartierului. Actuala construcție, ridicată între 1910 și 1918, are un stil neoromânesc cu influențe bizantine și păstrează memoria primei biserici ridicate aici în anul 1719 de preotul Popa Nan. De-a lungul timpului, biserica a rămas un reper spiritual și urban, supraviețuind transformărilor orașului și planurilor de sistematizare din perioada comunistă.",
+    "shortDescription": "Biserica Popa Nan este unul dintre cele mai vechi și importante repere ale cartierului, locul care a dat numele străzii și a păstrat, timp de peste trei secole, memoria Bucureștiului vechi.",
+    "fullDescription": "Biserica Popa Nan este unul dintre cele mai importante repere istorice și spirituale ale cartierului și locul de la care strada își primește numele. Ridicată inițial în anul 1719 de preotul Ioan, cunoscut în memoria locală drept Popa Nan, biserica a devenit încă din secolul al XVIII-lea centrul unei mahalale aflate atunci la marginea Bucureștiului.\n\nÎn jurul numelui „Popa Nan” s-au păstrat de-a lungul timpului mai multe povești și legende urbane. Una dintre cele mai cunoscute spune că numele „Nan” provenea dintr-o formă populară a numelui Ioan, iar preotul era apreciat în comunitate pentru apropierea față de oamenii cartierului. Cu timpul, numele său avea să fie preluat nu doar de biserică, ci și de întreaga stradă și mahala din jur.\n\nPrima construcție a fost o biserică de lemn, înlocuită ulterior cu o biserică de zid pe măsură ce zona începea să se dezvolte urbanistic. Vechiul lăcaș a trecut prin numeroase reparații și consolidări după cutremure și degradări provocate de timp, până când, în anul 1910, clădirea s-a prăbușit aproape complet.\n\nDe numele bisericii este legată și o poveste rămasă în memoria cartierului după perioada comunistă. Se spune că, într-un moment în care acoperișul bisericii era grav afectat, un reprezentant al regimului ar fi întrebat ironic în cât timp „învie” biserica. Preotul ar fi răspuns: „în trei zile”, iar oficialul ar fi amenințat că, dacă lucrările nu sunt terminate până atunci, pe locul bisericii va fi construită o grădiniță, considerată „mai utilă” pentru noul oraș socialist. Povestea a rămas una dintre legendele urbane asociate rezistenței bisericii în perioada comunistă.\n\nActuala biserică a fost construită între 1910 și 1918 după planurile arhitectului Cristofi Cerchez, într-un stil neoromânesc cu influențe bizantine. Dimensiunile sale monumentale, turlele masive și detaliile arhitecturale o transformă într-una dintre cele mai recognoscibile biserici ale zonei.\n\nDe-a lungul timpului, Biserica Popa Nan a supraviețuit războaielor, cutremurelor și transformărilor radicale ale Bucureștiului modern. În perioada comunistă, când multe lăcașuri de cult au fost demolate sau mutate în urma planurilor de sistematizare, biserica a rămas unul dintre reperele centrale ale cartierului.\n\nAstăzi, locul păstrează încă atmosfera Bucureștiului vechi. Curtea liniștită și arhitectura impunătoare creează un contrast puternic cu orașul contemporan și amintesc de mahalaua istorică dezvoltată în jurul bisericii cu mai bine de trei sute de ani în urmă.",
     "coverImage": "/images/locations/biserica-popa-nan/cover.jpg",
     "beforeImage": "/images/locations/biserica-popa-nan/before.jpg",
     "afterImage": "/images/locations/biserica-popa-nan/after.jpg",
@@ -19,35 +19,53 @@
       "/images/locations/biserica-popa-nan/2.jpg",
       "/images/locations/biserica-popa-nan/3.jpg",
       "/images/locations/biserica-popa-nan/4.jpg",
-      "/images/locations/biserica-popa-nan/5.jpg"
+      "/images/locations/biserica-popa-nan/5.jpg",
+      "/images/locations/biserica-popa-nan/6.jpg",
+      "/images/locations/biserica-popa-nan/7.jpg",
+      "/images/locations/biserica-popa-nan/8.jpg"
     ],
     "audio": "/audio/biserica-popa-nan.mp3",
     "timeline": [
       {
         "year": "1719",
         "title": "Prima biserică de lemn",
-        "description": "Este ridicată prima biserică de lemn de către Popa Nan, părintele Ioan."
+        "description": "Preotul Ioan, cunoscut drept Popa Nan, ridică prima biserică de lemn care va da ulterior numele străzii și cartierului."
       },
       {
-        "year": "1845",
-        "title": "Biserica de zid",
-        "description": "Se ridică o biserică de zid, distrusă ulterior în urma Marelui Foc."
+        "year": "1764–1765",
+        "title": "Ridicarea bisericii de zid",
+        "description": "Pe locul vechiului lăcaș este construită o nouă biserică de zid, într-o perioadă în care mahalaua începea să se dezvolte."
+      },
+      {
+        "year": "1802–1886",
+        "title": "Reparații și extinderi succesive",
+        "description": "Biserica trece prin mai multe lucrări de consolidare, extindere și refacere după cutremure și degradări provocate de timp."
       },
       {
         "year": "1910",
-        "title": "Începe construcția actuală",
-        "description": "Începe ridicarea clădirii actuale a bisericii."
+        "title": "Prăbușirea vechii biserici",
+        "description": "Afectată de numeroase degradări și modificări succesive, vechea biserică se prăbușește în noaptea de Sfântul Ilie."
       },
       {
-        "year": "1918",
-        "title": "Sfințirea bisericii",
-        "description": "Biserica este sfințită după Primul Război Mondial."
+        "year": "1910–1918",
+        "title": "Construirea actualului lăcaș",
+        "description": "Noua biserică este ridicată după planurile arhitectului Cristofi Cerchez, într-un stil neoromânesc cu influențe bizantine."
+      },
+      {
+        "year": "1977",
+        "title": "Cutremurul și restaurarea",
+        "description": "Cutremurul din 1977 provoacă prăbușirea turlei principale, iar lucrările de restaurare vor continua mai mulți ani."
+      },
+      {
+        "year": "Prezent",
+        "title": "Simbol al cartierului",
+        "description": "Biserica Popa Nan rămâne unul dintre cele mai cunoscute repere spirituale și istorice ale zonei."
       }
     ],
     "facts": [
-      "Numele străzii și al cartierului provine de la preotul Popa Nan.",
-      "„Nan” este considerat o prescurtare de la Ioan.",
-      "Biserica a rămas unul dintre reperele centrale ale zonei."
+      "Numele străzii și al cartierului Popa Nan provine de la preotul Ioan, cunoscut de comunitate sub numele de Popa Nan, fondatorul primei biserici ridicate aici în anul 1719.",
+      "Actuala biserică a fost construită între 1910 și 1918 după planurile arhitectului Cristofi Cerchez, unul dintre reprezentanții importanți ai stilului neoromânesc din București.",
+      "O legendă urbană a cartierului spune că, în perioada comunistă, un reprezentant al regimului ar fi amenințat că va transforma locul într-o grădiniță dacă biserica nu va fi reparată „în trei zile”, aluzie ironică la Învierea lui Hristos."
     ],
     "sources": [
       {
@@ -73,32 +91,55 @@
     "period": "Sfârșitul secolului XIX - începutul secolului XX",
     "lat": 44.43697836057831,
     "lng": 26.12385010302941,
-    "shortDescription": "Casă bucureșteană veche, reprezentativă pentru arhitectura civilă a zonei.",
-    "fullDescription": "Casa de la nr. 32 păstrează imaginea Bucureștiului de sfârșit de secol XIX și început de secol XX. Prin proporțiile sale, ferestrele înalte și detaliile decorative de pe fațadă, clădirea reflectă gustul clasei medii înstărite din perioada respectivă. Este un exemplu de arhitectură civilă care ajută la reconstituirea atmosferei străzii Popa Nan înainte de transformările urbane moderne.",
+    "shortDescription": "Ascunsă sub iederă, casa de la nr. 32 este unul dintre cele mai misterioase repere ale străzii Popa Nan, legată de povești despre Maria Tănase, familia Florescu și vechi legende urbane ale Bucureștiului.",
+    "fullDescription": "Ascunsă la intersecția dintre strada Popa Nan și strada Mecet, casa de la nr. 32 este una dintre cele mai spectaculoase și enigmatice clădiri ale cartierului. Cunoscută astăzi drept Casa sau Blocul Florescu, construcția a fost ridicată în anii 1942–1943 pentru medicul radiolog Gheorghe Florescu și familia sa, după planurile arhitectului George Damian, unul dintre reprezentanții importanți ai stilului mediteranean din Bucureștiul interbelic târziu.\n\nClădirea atrage imediat atenția prin silueta sa neobișnuită, acoperită aproape complet de iederă. Volumele rotunjite, balcoanele retrase, ferestrele arcuite și detaliile decorative inspirate din arhitectura mediteraneană îi dau un aspect diferit de restul caselor din zonă. În perioada în care a fost construită, imobilul era considerat modern și sofisticat, combinând spații de locuit elegante cu o clinică de radiologie integrată în clădire.\n\nDe-a lungul timpului, casa a devenit înconjurată de numeroase povești urbane. Locuitorii cartierului au asociat-o cu atmosfera boemă a Bucureștiului vechi, iar în jurul ei au apărut inclusiv legende despre presupusa funcționare a unui bordel în perioada interbelică. Deși aceste informații nu sunt confirmate documentar, ele au contribuit la aura misterioasă care înconjoară și astăzi clădirea.\n\nImobilul este legat și de numele Mariei Tănase, care a locuit aici o perioadă. Prezența artistei a transformat locul într-un mic reper al memoriei culturale bucureștene, iar mulți trecători continuă să identifice clădirea drept „casa Mariei Tănase”. Povestea ei se împletește astfel cu istoria unei arhitecturi rare, a unei familii importante și a unei străzi care păstrează încă fragmente din Bucureștiul elegant al anilor ’40.\n\nAstăzi, casa de la nr. 32 rămâne unul dintre cele mai fotografiate obiective de pe strada Popa Nan. Dincolo de frumusețea arhitecturală, locul continuă să fascineze prin amestecul de memorie urbană, mister și povești care par să nu se termine niciodată.",
     "coverImage": "/images/locations/casa-popa-nan-32/cover.jpg",
     "beforeImage": "/images/locations/casa-popa-nan-32/before.jpg",
     "afterImage": "/images/locations/casa-popa-nan-32/after.jpg",
     "gallery": [
       "/images/locations/casa-popa-nan-32/1.jpg",
-      "/images/locations/casa-popa-nan-32/2.jpg"
+      "/images/locations/casa-popa-nan-32/2.jpg",
+      "/images/locations/casa-popa-nan-32/3.jpg",
+      "/images/locations/casa-popa-nan-32/4.jpg",
+      "/images/locations/casa-popa-nan-32/5.jpg",
+      "/images/locations/casa-popa-nan-32/6.jpg",
+      "/images/locations/casa-popa-nan-32/7.jpg",
+      "/images/locations/casa-popa-nan-32/8.jpg",
+      "/images/locations/casa-popa-nan-32/9.jpg",
+      "/images/locations/casa-popa-nan-32/10.jpg"
     ],
     "audio": "/audio/casa-popa-nan-32.mp3",
     "timeline": [
       {
-        "year": "1900",
-        "title": "Locuință urbană",
-        "description": "Casa funcționează ca locuință familială, păstrând tipologia caselor bucureștene vechi."
+        "year": "1941",
+        "title": "Începerea proiectului",
+        "description": "Familia doctorului Gheorghe Florescu începe dezvoltarea unei reședințe moderne pe strada Popa Nan, într-o perioadă în care zona era locuită de elite medicale și intelectuale."
+      },
+      {
+        "year": "1942–1944",
+        "title": "Ridicarea clădirii",
+        "description": "Arhitectul George Damian proiectează și construiește imobilul într-un stil mediteranean rar întâlnit în București, cu influențe moderniste și decorative."
+      },
+      {
+        "year": "Anii ’50",
+        "title": "Povești și legende urbane",
+        "description": "Casa începe să fie înconjurată de zvonuri și povești ale cartierului, devenind una dintre cele mai misterioase apariții de pe strada Popa Nan."
+      },
+      {
+        "year": "Anii ’60–’70",
+        "title": "Legătura cu Maria Tănase",
+        "description": "Imobilul rămâne asociat cu numele Mariei Tănase, contribuind la aura culturală și boemă a locului."
       },
       {
         "year": "Prezent",
-        "title": "Martor arhitectural",
-        "description": "Clădirea continuă să păstreze volumetria și atmosfera vechii străzi."
+        "title": "Simbol al Bucureștiului ascuns",
+        "description": "Acoperită de iederă și aproape neschimbată, casa continuă să fascineze prin arhitectura sa neobișnuită și atmosfera vechiului București."
       }
     ],
     "facts": [
-      "Reflectă stilul caselor de tip vagon evoluat.",
-      "Este reprezentativă pentru lotizările vechi ale zonei.",
-      "Păstrează detalii decorative eclectice."
+      "Casa Florescu este considerată una dintre cele mai neobișnuite apariții arhitecturale de pe strada Popa Nan, datorită stilului mediteranean rar întâlnit în Bucureștiul anilor ’40 și fațadei acoperite aproape complet de iederă.",
+      "Clădirea este asociată cu Maria Tănase, care a locuit aici o perioadă, contribuind la atmosfera boemă și misterioasă care înconjoară și astăzi imobilul.",
+      "În jurul casei au circulat de-a lungul timpului numeroase legende urbane, inclusiv zvonuri despre existența unui bordel în perioada interbelică, însă aceste povești nu au fost confirmate documentar."
     ],
     "sources": [
       {
@@ -111,58 +152,6 @@
   },
   {
     "id": 3,
-    "slug": "fabrica-de-matase-popa-nan",
-    "title": "Fabrica de Mătase",
-    "type": "patrimoniu-industrial",
-    "categoryLabel": "Patrimoniu industrial",
-    "address": "Str. Popa Nan nr. 82",
-    "period": "Prima jumătate a secolului XX",
-    "lat": 44.43377116484195,
-    "lng": 26.12412527889735,
-    "shortDescription": "Fost spațiu industrial textil, reconvertit în zonă creativă și culturală.",
-    "fullDescription": "Fabrica de Mătase de pe Popa Nan este unul dintre reperele industriale ale zonei. Complexul, format din hale înalte și structuri masive, amintește de perioada în care Bucureștiul avea o puternică activitate manufacturieră și industrială. După declinul producției textile, spațiul a trecut printr-un proces de reconversie, devenind un loc asociat cu ateliere, studiouri foto, birouri și evenimente creative.",
-    "coverImage": "/images/locations/fabrica-de-matase/cover.jpg",
-    "beforeImage": "/images/locations/fabrica-de-matase/before.jpg",
-    "afterImage": "/images/locations/fabrica-de-matase/after.jpg",
-    "gallery": [
-      "/images/locations/fabrica-de-matase/1.jpg",
-      "/images/locations/fabrica-de-matase/2.jpg",
-      "/images/locations/fabrica-de-matase/3.jpg"
-    ],
-    "audio": "/audio/fabrica-de-matase.mp3",
-    "timeline": [
-      {
-        "year": "Interbelic",
-        "title": "Unitate de producție textilă",
-        "description": "Funcționează ca spațiu industrial dedicat producției textile."
-      },
-      {
-        "year": "Post-1990",
-        "title": "Declin industrial",
-        "description": "După schimbările economice, activitatea industrială intră în declin."
-      },
-      {
-        "year": "Prezent",
-        "title": "Reconversie creativă",
-        "description": "Spațiul este folosit pentru birouri, ateliere, studiouri și evenimente."
-      }
-    ],
-    "facts": [
-      "Este un exemplu de reconversie a patrimoniului industrial.",
-      "Spațiile industriale au fost recuperate prin activități creative.",
-      "Fabrica arată cum vechea industrie poate primi o funcție contemporană."
-    ],
-    "sources": [
-      {
-        "title": "Arhivele industriale ale Municipiului București",
-        "type": "arhivă",
-        "url": null
-      }
-    ],
-    "tourIds": ["fabrici-si-mahalale", "memoria-strazii"]
-  },
-  {
-    "id": 4,
     "slug": "casa-gheorghe-braescu",
     "title": "Casa Scriitorului Gheorghe Brăescu",
     "type": "casa-memoriala",
@@ -171,32 +160,54 @@
     "period": "Prima jumătate a secolului XX",
     "lat": 44.436896155380836,
     "lng": 26.124250697173572,
-    "shortDescription": "Casă asociată cu scriitorul Gheorghe Brăescu și atmosfera literară a Bucureștiului vechi.",
-    "fullDescription": "Casa asociată cu Gheorghe Brăescu păstrează memoria unei perioade în care strada Popa Nan era legată nu doar de viața de cartier, ci și de lumea culturală a Bucureștiului. Clădirea, elegantă și discretă, amintește de atmosfera liniștită a vechiului oraș. Gheorghe Brăescu, scriitor și fost ofițer, este cunoscut pentru schițele sale umoristice, multe dintre ele inspirate de mediul cazon.",
+    "shortDescription": "Casa asociată scriitorului Gheorghe Brăescu păstrează atmosfera Bucureștiului interbelic și memoria unui autor cunoscut pentru umorul său fin și poveștile inspirate din lumea militară.",
+    "fullDescription": "La intersecția dintre strada Popa Nan și strada Mecet se află una dintre casele care păstrează discret memoria culturală a vechiului București. Imobilul este asociat cu scriitorul Gheorghe Brăescu, autor cunoscut pentru schițele și povestirile sale umoristice inspirate adesea din mediul militar și din atmosfera societății românești interbelice.\n\nCasa, elegantă și retrasă față de agitația orașului, reflectă imaginea unui București liniștit, în care străzile rezidențiale erau locuite de intelectuali, funcționari și oameni ai vieții culturale. Deși arhitectura clădirii este sobră și discretă, locul păstrează farmecul caselor bucureștene din prima jumătate a secolului XX.\n\nGheorghe Brăescu a avut o biografie aparte. Ofițer de carieră și participant la Primul Război Mondial, scriitorul și-a pierdut brațul drept în timpul conflictului, însă a continuat să scrie folosind mâna stângă. Experiențele sale militare aveau să inspire multe dintre textele care l-au făcut cunoscut și apreciat pentru umorul său subtil și observațiile ironice asupra vieții cotidiene.\n\nPrezența lui Gheorghe Brăescu pe strada Popa Nan leagă zona nu doar de istoria urbană a Bucureștiului, ci și de memoria culturală și literară a orașului. Astăzi, casa rămâne un reper discret al cartierului, un loc care amintește de perioada în care Bucureștiul interbelic era definit și prin viața intelectuală ascunsă în spatele unor străzi aparent obișnuite.",
     "coverImage": "/images/locations/casa-gheorghe-braescu/cover.jpg",
     "beforeImage": "/images/locations/casa-gheorghe-braescu/before.jpg",
     "afterImage": "/images/locations/casa-gheorghe-braescu/after.jpg",
     "gallery": [
       "/images/locations/casa-gheorghe-braescu/1.jpg",
-      "/images/locations/casa-gheorghe-braescu/2.jpg"
+      "/images/locations/casa-gheorghe-braescu/2.jpg",
+      "/images/locations/casa-gheorghe-braescu/3.jpg",
+      "/images/locations/casa-gheorghe-braescu/4.jpg",
+      "/images/locations/casa-gheorghe-braescu/5.jpg",
+      "/images/locations/casa-gheorghe-braescu/6.jpg",
+      "/images/locations/casa-gheorghe-braescu/7.jpg",
+      "/images/locations/casa-gheorghe-braescu/8.jpg",
+      "/images/locations/casa-gheorghe-braescu/9.jpg"
     ],
     "audio": "/audio/casa-gheorghe-braescu.mp3",
     "timeline": [
       {
-        "year": "Interbelic",
-        "title": "Locuință și spațiu de creație",
-        "description": "Scriitorul locuiește și creează aici unele dintre textele sale cunoscute."
+        "year": "Începutul secolului XX",
+        "title": "Construirea imobilului",
+        "description": "Casa este ridicată într-o perioadă în care strada Popa Nan începea să capete aspectul unui cartier rezidențial modern al Bucureștiului."
+      },
+      {
+        "year": "1916–1918",
+        "title": "Experiența Primului Război Mondial",
+        "description": "Participarea lui Gheorghe Brăescu la război și pierderea brațului drept îi vor influența profund viața și viitoarea carieră literară."
+      },
+      {
+        "year": "Anii ’20–’30",
+        "title": "Viața literară pe strada Popa Nan",
+        "description": "Gheorghe Brăescu locuiește aici și publică schițe și povestiri umoristice inspirate din experiențele sale militare și din atmosfera Bucureștiului interbelic."
       },
       {
         "year": "1949",
         "title": "Moartea scriitorului",
-        "description": "Gheorghe Brăescu moare la București, iar casa rămâne asociată cu memoria sa culturală."
+        "description": "Gheorghe Brăescu se stinge din viață la București, rămânând una dintre figurile importante ale literaturii umoristice românești."
+      },
+      {
+        "year": "Prezent",
+        "title": "Memoria culturală a străzii",
+        "description": "Casa continuă să amintească de legătura dintre strada Popa Nan și viața culturală și literară a Bucureștiului interbelic."
       }
     ],
     "facts": [
-      "Gheorghe Brăescu a fost ofițer de carieră, general de brigadă.",
-      "Umorul său s-a îndreptat adesea către mediul militar.",
-      "După ce și-a pierdut brațul drept în Primul Război Mondial, a învățat să scrie cu mâna stângă."
+      "Gheorghe Brăescu a fost ofițer de carieră și a ajuns la gradul de general de brigadă înainte de a deveni cunoscut ca scriitor umorist.",
+      "În timpul Primului Război Mondial, scriitorul și-a pierdut brațul drept, însă a continuat să scrie folosind mâna stângă.",
+      "Textele lui Gheorghe Brăescu au fost inspirate adesea din experiențele sale militare și din atmosfera societății românești interbelice."
     ],
     "sources": [
       {
@@ -218,6 +229,70 @@
     "tourIds": ["popa-nan-interbelic", "memoria-strazii"]
   },
   {
+    "id": 4,
+    "slug": "fabrica-de-matase-popa-nan",
+    "title": "Fabrica de Mătase Populară",
+    "type": "patrimoniu-industrial",
+    "categoryLabel": "Patrimoniu industrial",
+    "address": "Str. Popa Nan nr. 82",
+    "period": "Prima jumătate a secolului XX",
+    "lat": 44.43377116484195,
+    "lng": 26.12412527889735,
+    "shortDescription": "Fosta fabrică „Mătasea Populară” păstrează memoria Bucureștiului industrial de altădată, într-un loc unde halele textile au dispărut treptat, lăsând loc noilor transformări comerciale ale orașului.",
+    "fullDescription": "Fosta fabrică „Mătasea Populară” de pe strada Popa Nan a fost unul dintre reperele industriale importante ale zonei și o prezență familiară pentru generații întregi de bucureșteni. Complexul industrial făcea parte din perioada în care această parte a orașului era marcată de ateliere, depozite și unități de producție care transformau treptat mahalalele vechi într-un București modern și activ economic.\n\nHalele fabricii, construite într-un stil industrial utilitar specific mijlocului de secol XX, dominau zona prin dimensiunile lor și prin atmosfera caracteristică marilor spații de producție. În interior funcționau secții dedicate industriei textile, iar fabrica era asociată cu producția de mătase și materiale textile într-o perioadă în care industria ușoară avea un rol important în economia orașului.\n\nDupă schimbările economice de după 1989, activitatea industrială a început să intre în declin, la fel ca în cazul multor alte fabrici bucureștene. O parte dintre clădiri au fost abandonate, iar complexul a început treptat să dispară din peisajul urban. În anul 2012, un incendiu puternic a afectat grav fosta fabrică, imaginile cu halele cuprinse de flăcări devenind simbolice pentru dispariția treptată a patrimoniului industrial bucureștean.\n\nÎn anii următori, mare parte din vechea fabrică a fost demolată, iar zona a trecut printr-o transformare comercială radicală. Astăzi, pe locul fostei fabrici se află un magazin Kaufland, iar puține elemente mai amintesc de trecutul industrial al locului. Transformarea spațiului este unul dintre exemplele care ilustrează cel mai bine schimbările rapide prin care a trecut Bucureștiul după perioada comunistă: de la hale industriale și producție textilă, la centre comerciale și dezvoltări urbane contemporane.\n\nPovestea fostei fabrici „Mătasea Populară” vorbește astfel nu doar despre industrie, ci și despre memoria unui oraș care continuă să se schimbe, uneori atât de repede încât urmele trecutului devin aproape invizibile.",
+    "coverImage": "/images/locations/fabrica-de-matase/cover.jpg",
+    "beforeImage": "/images/locations/fabrica-de-matase/before.jpg",
+    "afterImage": "/images/locations/fabrica-de-matase/after.jpg",
+    "gallery": [
+      "/images/locations/fabrica-de-matase/1.jpg",
+      "/images/locations/fabrica-de-matase/2.jpg",
+      "/images/locations/fabrica-de-matase/3.jpg",
+      "/images/locations/fabrica-de-matase/4.jpg",
+      "/images/locations/fabrica-de-matase/5.jpg"
+    ],
+    "audio": "/audio/fabrica-de-matase.mp3",
+    "timeline": [
+      {
+        "year": "Mijlocul secolului XX",
+        "title": "Dezvoltarea fabricii",
+        "description": "Fabrica „Mătasea Populară” devine parte a peisajului industrial al zonei Popa Nan, într-o perioadă de dezvoltare intensă a industriei textile bucureștene."
+      },
+      {
+        "year": "Perioada comunistă",
+        "title": "Activitatea industrială",
+        "description": "Complexul funcționează ca spațiu de producție textilă și contribuie la economia industrială a Bucureștiului."
+      },
+      {
+        "year": "Anii ’90",
+        "title": "Declinul producției",
+        "description": "După schimbările economice de după 1989, activitatea fabricii începe să scadă treptat, iar multe spații industriale sunt abandonate."
+      },
+      {
+        "year": "Anii 2000",
+        "title": "Demolarea complexului",
+        "description": "O mare parte din vechile hale industriale este demolată în contextul transformărilor comerciale și urbane ale zonei."
+      },
+      {
+        "year": "Prezent",
+        "title": "Un nou peisaj urban",
+        "description": "Pe locul fostei fabrici se află astăzi un magazin Kaufland, simbol al noii identități comerciale a cartierului."
+      }
+    ],
+    "facts": [
+      "Fabrica „Mătasea Populară” a fost una dintre unitățile textile cunoscute ale Bucureștiului comunist și făcea parte din peisajul industrial care domina odinioară zona Popa Nan.",
+      "După dispariția activității industriale, mare parte din fostul complex a fost demolată, iar pe terenul fabricii a fost construit ulterior magazinul Kaufland existent astăzi.",
+      "Transformarea fostei fabrici într-un spațiu comercial modern este unul dintre exemplele care arată cât de rapid s-a schimbat Bucureștiul după anii ’90 și cât de ușor poate dispărea memoria industrială a orașului."
+    ],
+    "sources": [
+      {
+        "title": "Arhivele industriale ale Municipiului București",
+        "type": "arhivă",
+        "url": null
+      }
+    ],
+    "tourIds": ["fabrici-si-mahalale", "memoria-strazii"]
+  },
+  {
     "id": 5,
     "slug": "electrecord-popa-nan",
     "title": "Fabrica de Discuri Electrecord",
@@ -227,38 +302,48 @@
     "period": "Înființată în 1932",
     "lat": 44.43766864921393,
     "lng": 26.123682380841906,
-    "shortDescription": "Fost sediu al celei mai importante case de discuri din România comunistă.",
-    "fullDescription": "Fabrica de Discuri Electrecord este unul dintre cele mai importante repere culturale și industriale ale străzii Popa Nan. Clădirea a fost asociată cu istoria muzicii românești, fiind locul unde au fost imprimate numeroase discuri care au circulat în casele românilor în perioada comunistă. Deși arhitectura este mai degrabă utilitară, importanța culturală a locului este majoră.",
+    "shortDescription": "Fabrica de Discuri Electrecord a fost unul dintre cele mai importante locuri din istoria muzicii românești, spațiul în care au fost imprimate viniluri ascultate de generații întregi.",
+    "fullDescription": "Fabrica de Discuri Electrecord de pe strada Popa Nan este unul dintre cele mai importante repere culturale și industriale ale zonei. Timp de decenii, aici au fost produse și imprimate discurile care au ajuns în casele românilor, transformând locul într-un simbol al muzicii din perioada comunistă și postbelică.\n\nOriginile fabricii se leagă de compania „Lifa”, fondată în anii ’30 de Nathan Mischonzniki, într-o perioadă în care industria fonografică începea să se dezvolte în România. După naționalizarea din 1948, fabrica devine Electrecord și ajunge singura casă de discuri importantă din România comunistă. În halele și studiourile sale au fost produse mii de discuri de vinil, benzi și înregistrări care au definit cultura muzicală a mai multor generații.\n\nDe aici au plecat albume și înregistrări ale unor artiști importanți precum Maria Tănase, Phoenix, Gică Petrescu, Angela Similea sau Dan Spătaru. Pentru mulți români, sigla Electrecord a devenit sinonimă cu muzica ascultată acasă, la pickup, într-o perioadă în care accesul la producții muzicale internaționale era limitat.\n\nClădirea păstrează și astăzi aspectul unui spațiu industrial utilitar, fără ornamente spectaculoase, însă importanța sa culturală depășește arhitectura propriu-zisă. Electrecord nu a fost doar o fabrică, ci și unul dintre centrele prin care muzica românească a fost produsă, arhivată și distribuită în întreaga țară.\n\nAstăzi, locul rămâne un reper al memoriei muzicale și industriale a Bucureștiului, amintind de perioada în care strada Popa Nan era legată nu doar de istoria cartierului, ci și de cultura sonoră a României.",
     "coverImage": "/images/locations/electrecord/cover.jpg",
     "beforeImage": "/images/locations/electrecord/before.jpg",
     "afterImage": "/images/locations/electrecord/after.jpg",
     "gallery": [
-      "/images/locations/electrecord/1.jpg",
+      "/images/locations/electrecord/3.jpg",
       "/images/locations/electrecord/2.jpg",
-      "/images/locations/electrecord/3.jpg"
+      "/images/locations/electrecord/4.jpg"
     ],
     "audio": "/audio/electrecord.mp3",
     "timeline": [
       {
         "year": "1932",
-        "title": "Înființarea fabricii",
-        "description": "Nathan Mischonzniki pune bazele fabricii sub numele de Lifa."
+        "title": "Înființarea companiei Lifa",
+        "description": "Nathan Mischonzniki pune bazele companiei „Lifa”, una dintre primele inițiative importante din industria fonografică românească."
       },
       {
         "year": "1948",
-        "title": "Naționalizarea",
-        "description": "Fabrica este naționalizată și transformată în Electrecord."
+        "title": "Naționalizarea fabricii",
+        "description": "După instaurarea regimului comunist, fabrica este naționalizată și primește numele Electrecord."
       },
       {
-        "year": "Anii '70-'80",
-        "title": "Apogeul vinilurilor",
-        "description": "Electrecord atinge perioada de maximă producție și vizibilitate culturală."
+        "year": "Anii ’60–’80",
+        "title": "Epoca de aur a vinilurilor",
+        "description": "Electrecord devine principala casă de discuri din România, producând mii de discuri ascultate în întreaga țară."
+      },
+      {
+        "year": "Anii ’90",
+        "title": "Transformările postcomuniste",
+        "description": "După 1989, industria muzicală și tehnologiile de înregistrare se schimbă rapid, iar rolul fabricii începe să se transforme."
+      },
+      {
+        "year": "Prezent",
+        "title": "Transformarea zonei",
+        "description": "Vechea fabrică Electrecord a dispărut treptat din peisajul urban, iar în locul său se află astăzi un ansamblu rezidențial modern, unul dintre exemplele transformărilor recente ale străzii Popa Nan."
       }
     ],
     "facts": [
-      "Electrecord a fost singura casă de discuri din România comunistă.",
-      "Aici au fost imprimate discuri ale unor artiști importanți, de la Maria Tănase la Phoenix.",
-      "Locul leagă strada Popa Nan de istoria muzicii românești."
+      "Electrecord a fost singura casă de discuri importantă din România comunistă și a dominat producția muzicală timp de mai multe decenii.",
+      "În studiourile și halele fabricii au fost imprimate discuri ale unor artiști celebri precum Maria Tănase, Phoenix, Gică Petrescu sau Angela Similea.",
+      "Pentru multe generații de români, sigla Electrecord a devenit simbolul muzicii ascultate la pickup și al culturii muzicale din perioada comunistă."
     ],
     "sources": [
       {
