@@ -2,11 +2,12 @@
   <footer class="footer">
     <v-container class="footer-container">
       <div>
-        <strong>Discover PopaNan</strong>
-        <p>O experiență digitală despre memoria străzii Popa Nan.</p>
+        <strong>Descoperă Popa Nan</strong>
+        <p> O arhivă digitală dedicată memoriei urbane, poveștilor și locurilor care
+          păstrează spiritul străzii Popa Nan.</p>
       </div>
 
-      <span>© 2026</span>
+      <span>© 2026 Memoria Popa Nan</span>
     </v-container>
   </footer>
 </template>

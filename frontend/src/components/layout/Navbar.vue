@@ -2,25 +2,23 @@
   <v-app-bar class="navbar" elevation="0">
     <v-container class="nav-container">
       <RouterLink to="/" class="brand">
-        <span class="brand-mark">D</span>
-        <span>Discover PopaNan</span>
+        <div class="brand-mark">
+          <img src="/images/pin.svg" alt="Pin" class="brand-icon" />
+        </div>
+        <span>Descoperă Popa Nan</span>
       </RouterLink>
 
       <div class="nav-links desktop-links">
         <RouterLink to="/sights">Obiective</RouterLink>
         <RouterLink to="/map">Hartă</RouterLink>
         <RouterLink to="/tours">Tururi</RouterLink>
+        <RouterLink to="/contributions">Arhiva comunitară</RouterLink>
         <RouterLink to="/about">Despre noi</RouterLink>
       </div>
 
       <v-menu location="bottom end">
         <template #activator="{ props }">
-          <v-btn
-            v-bind="props"
-            icon
-            variant="text"
-            class="mobile-menu"
-          >
+          <v-btn v-bind="props" icon variant="text" class="mobile-menu">
             <v-icon>mdi-menu</v-icon>
           </v-btn>
         </template>
@@ -29,6 +27,7 @@
           <v-list-item to="/sights" title="Obiective" />
           <v-list-item to="/map" title="Hartă" />
           <v-list-item to="/tours" title="Tururi" />
+          <v-list-item to="/contributions" title="Arhiva comunitară" />
           <v-list-item to="/about" title="Despre noi" />
         </v-list>
       </v-menu>
@@ -61,8 +60,8 @@
 }
 
 .brand-mark {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 12px;
   background: #ff8a00;
   color: #0f0f0f;
@@ -90,6 +89,18 @@
 
 .mobile-menu {
   display: none;
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  display: block;
 }
 
 @media (max-width: 768px) {
