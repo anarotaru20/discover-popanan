@@ -72,7 +72,7 @@
 
               <div class="timeline-content">
                 <h3>{{ item.title }}</h3>
-                <p>{{ item.description }}</p>
+                <p style="text-align: justify">{{ item.description }}</p>
               </div>
             </div>
           </div>
@@ -96,7 +96,7 @@
               <v-card-text>
                 <v-icon color="orange" size="28" class="mb-3"> mdi-lightbulb-on-outline </v-icon>
 
-                <p>{{ fact }}</p>
+                <p style="text-align: justify">{{ fact }}</p>
               </v-card-text>
             </v-card>
           </div>
