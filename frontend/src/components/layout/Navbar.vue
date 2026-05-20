@@ -14,23 +14,29 @@
         <RouterLink to="/tours">Tururi</RouterLink>
         <RouterLink to="/contributions">Arhiva comunitară</RouterLink>
         <RouterLink to="/about">Despre noi</RouterLink>
+
+        <div id="google_translate_element" class="translate-desktop"></div>
       </div>
 
-      <v-menu location="bottom end">
-        <template #activator="{ props }">
-          <v-btn v-bind="props" icon variant="text" class="mobile-menu">
-            <v-icon>mdi-menu</v-icon>
-          </v-btn>
-        </template>
+      <div class="mobile-actions">
+        <div id="google_translate_element_mobile" class="translate-mobile"></div>
 
-        <v-list bg-color="#181818">
-          <v-list-item to="/sights" title="Obiective" />
-          <v-list-item to="/map" title="Hartă" />
-          <v-list-item to="/tours" title="Tururi" />
-          <v-list-item to="/contributions" title="Arhiva comunitară" />
-          <v-list-item to="/about" title="Despre noi" />
-        </v-list>
-      </v-menu>
+        <v-menu location="bottom end">
+          <template #activator="{ props }">
+            <v-btn v-bind="props" icon variant="text" class="mobile-menu">
+              <v-icon>mdi-menu</v-icon>
+            </v-btn>
+          </template>
+
+          <v-list bg-color="#181818">
+            <v-list-item to="/sights" title="Obiective" />
+            <v-list-item to="/map" title="Hartă" />
+            <v-list-item to="/tours" title="Tururi" />
+            <v-list-item to="/contributions" title="Arhiva comunitară" />
+            <v-list-item to="/about" title="Despre noi" />
+          </v-list>
+        </v-menu>
+      </div>
     </v-container>
   </v-app-bar>
 </template>
@@ -72,6 +78,7 @@
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 28px;
 }
 
@@ -103,6 +110,44 @@
   display: block;
 }
 
+.mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.translate-mobile {
+  display: none;
+}
+
+:deep(.goog-te-gadget) {
+  color: transparent !important;
+  font-size: 0 !important;
+}
+
+:deep(.goog-te-gadget .goog-te-combo) {
+  background: #181818;
+  color: #f5f5f5;
+  border: 1px solid rgba(255, 138, 0, 0.3);
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-size: 13px;
+  outline: none;
+}
+
+:deep(.goog-logo-link),
+:deep(.goog-te-gadget span) {
+  display: none !important;
+}
+
+:deep(.goog-te-banner-frame) {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
 @media (max-width: 768px) {
   .desktop-links {
     display: none;
@@ -110,6 +155,14 @@
 
   .mobile-menu {
     display: inline-flex;
+  }
+
+  .translate-mobile {
+    display: block;
+  }
+
+  .translate-desktop {
+    display: none;
   }
 }
 </style>
