@@ -8,7 +8,7 @@
         <div class="hero-content">
           <p class="eyebrow">Despre proiect</p>
 
-          <h1>Discover Popa Nan</h1>
+          <h1>Descoperă Popa Nan</h1>
 
           <p class="hero-subtitle">
             O experiență digitală dedicată uneia dintre străzile ascunse ale Bucureștiului. Prin
@@ -39,7 +39,7 @@
             <h3>Istoria urbană spusă digital</h3>
 
             <p style="text-align: justify">
-              Discover Popa Nan este un proiect care redă vocea unui București ascuns printre
+              Descoperă Popa Nan este un proiect care redă vocea unui București ascuns printre
               fațade, curți vechi și urmele timpului. Prin imagini, povești și fragmente de memorie
               urbană, aplicația transformă strada Popa Nan într-o experiență care poate fi explorată
               pas cu pas.
@@ -54,7 +54,7 @@
             <p style="text-align: justify">
               Scopul aplicației nu este doar informarea, ci păstrarea unei memorii urbane care riscă
               să se piardă printre clădiri moderne, străzi aglomerate și ritmul grăbit al orașului.
-              Discover Popa Nan încearcă să readucă în lumină fragmente din trecut și să transforme
+              Descoperă Popa Nan încearcă să readucă în lumină fragmente din trecut și să transforme
               explorarea Bucureștiului într-o experiență personală, vie și apropiată de oameni.
             </p>
           </article>
@@ -63,7 +63,7 @@
             <span>Ideea principală</span>
             <h3 style="font-size: 1.85rem">Orașul devine viu atunci când îi descoperi poveștile.</h3>
             <p style="text-align: justify">
-              Discover Popa Nan transformă explorarea urbană într-o experiență vizuală și
+              Descoperă Popa Nan transformă explorarea urbană într-o experiență vizuală și
               interactivă.
               <br />
               Prin hărți, imagini și elemente multimedia, aplicația reconstruiește atmosfera unei
@@ -255,7 +255,7 @@
       <v-container class="content-wrap">
         <div class="closing-card">
           <p class="eyebrow">Concluzie</p>
-          <h2>Discover Popa Nan este o invitație la redescoperirea orașului.</h2>
+          <h2>Descoperă Popa Nan este o invitație la redescoperirea orașului.</h2>
           <p>
             Aplicația propune o altă modalitate de a privi Bucureștiul — nu doar ca spațiu urban, ci
             ca o colecție de povești, urme și memorii ascunse în străzi și clădiri. Prin explorare
