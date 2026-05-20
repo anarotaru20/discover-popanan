@@ -417,7 +417,7 @@ const loadHistoricalKmz = async () => {
     })
   } catch (error) {
     if (currentToken === historicalLoadToken.value) {
-      historicalError.value = `Nu s-a putut încărca harta din ${activeMap.year}.`
+      historicalError.value = `Nu s-a putut încărca harta din ${activeMap.year}`
       console.error('[KMZ LOAD ERROR]', activeMap.file, error)
     }
   } finally {
