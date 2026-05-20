@@ -1294,4 +1294,66 @@ onBeforeUnmount(() => {
     width: 100%;
   }
 }
+@media (max-width: 430px) {
+  .map-card {
+    width: 100%;
+    min-height: 520px;
+  }
+
+  .map-preview {
+    height: 520px;
+    border-radius: 28px;
+  }
+
+  .map-popup {
+    left: 14px;
+    right: 14px;
+    bottom: 18px;
+    display: grid;
+    grid-template-columns: 128px 1fr;
+    align-items: stretch;
+    min-height: 170px;
+    overflow: hidden;
+  }
+
+  .map-popup img {
+    width: 128px;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .map-popup-content {
+    padding: 18px 14px;
+    min-width: 0;
+  }
+
+  .map-popup-content h3 {
+    font-size: 20px;
+    line-height: 1.15;
+  }
+
+  .map-popup-content p {
+    font-size: 13px;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .map-popup-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .map-popup-actions a,
+  .map-popup-actions button {
+    flex: 1;
+    min-height: 48px;
+    padding: 0 10px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+}
 </style>
