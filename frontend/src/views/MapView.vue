@@ -1294,56 +1294,120 @@ onBeforeUnmount(() => {
     width: 100%;
   }
 }
-@media (max-width: 430px) {
-  .map-popup {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: stretch;
-
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
+@media (max-width: 420px) {
+  .content-wrap {
+    padding-inline: 16px;
   }
 
-  .map-popup img,
-  .map-popup-image {
-    width: 95px !important;
-    min-width: 95px !important;
+  .map-hero {
+    padding: 58px 0 24px;
+  }
+
+  .map-section {
+    padding: 18px 0 56px;
+  }
+
+  .map-hero h1 {
+    font-size: clamp(2.25rem, 13vw, 3rem);
+  }
+
+  .hero-glow-one {
+    width: 210px;
+    height: 210px;
+    right: -70px;
+  }
+
+  .hero-glow-two {
+    width: 140px;
+    height: 140px;
+    left: -50px;
+  }
+
+  .map-area,
+  .leaflet-map {
+    min-height: 520px;
+  }
+
+  .map-sidebar {
+    padding: 16px;
+  }
+
+  .location-card {
+    grid-template-columns: 74px minmax(0, 1fr);
+    gap: 11px;
+    border-radius: 20px;
+  }
+
+  .location-card img {
+    width: 74px;
+    height: 74px;
+    border-radius: 16px;
+  }
+
+  .location-card-content p {
+    -webkit-line-clamp: 1;
+  }
+
+  .floating-card {
+    left: 12px;
+    bottom: 12px;
+
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+
+    width: calc(100% - 24px);
+
+    border-radius: 22px;
+  }
+
+  .floating-card img {
+    width: 100%;
+    height: 100%;
+    min-height: 140px;
     object-fit: cover;
   }
 
-  .map-popup-content {
-    padding: 10px !important;
-    min-width: 0;
+  .floating-card-content {
+    padding: 12px;
   }
 
-  .map-popup-title {
-    font-size: 16px !important;
+  .floating-card-content h2 {
+    font-size: 0.98rem;
     line-height: 1.1;
   }
 
-  .map-popup-description {
-    font-size: 11px !important;
+  .floating-card-content p {
+    margin-bottom: 6px;
+    font-size: 0.74rem;
+    line-height: 1.35;
+  }
 
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
+  .floating-description {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-
     overflow: hidden;
   }
 
-  .map-popup-actions {
-    display: flex !important;
-    flex-direction: row !important;
+  .floating-actions {
+    display: flex;
+    flex-direction: row;
     gap: 6px;
+    margin-top: 8px;
   }
 
-  .map-popup-actions button,
-  .map-popup-actions a {
+  .floating-actions :deep(.v-btn) {
     flex: 1;
-    height: 36px;
-    font-size: 11px;
-    padding: 0 8px;
+    min-width: 0;
+    min-height: 34px;
+
+    padding-inline: 8px;
+
+    font-size: 0.68rem;
+  }
+
+  .historical-panel {
+    width: 100%;
   }
 }
 </style>
