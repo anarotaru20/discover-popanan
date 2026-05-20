@@ -118,7 +118,7 @@
                     color="orange"
                     rounded="xl"
                     :loading="isHistoricalLoading && !pastMode"
-                    @click="togglePastMode"
+                    @click.prevent.stop="togglePastMode"
                   >
                     {{ pastMode ? 'Revino în prezent' : 'Vezi trecutul' }}
                   </v-btn>
@@ -300,7 +300,10 @@ const selectLocation = (location) => {
   }
 }
 
-const togglePastMode = async () => {
+const togglePastMode = async (event) => {
+  event?.preventDefault?.()
+  event?.stopPropagation?.()
+
   if (!map.value || isHistoricalLoading.value) return
 
   pastMode.value = !pastMode.value
