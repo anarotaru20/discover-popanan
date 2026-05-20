@@ -1,3 +1,39 @@
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  const addTranslate = (id) => {
+    if (!window.google?.translate?.TranslateElement) return
+
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: 'ro',
+        includedLanguages: 'en',
+        autoDisplay: false,
+      },
+      id,
+    )
+  }
+
+  window.googleTranslateElementInit = () => {
+    addTranslate('google_translate_element')
+    addTranslate('google_translate_element_mobile')
+  }
+
+  if (!document.getElementById('google-translate-script')) {
+    const script = document.createElement('script')
+
+    script.id = 'google-translate-script'
+    script.src =
+      'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+
+    document.body.appendChild(script)
+  } else {
+    window.googleTranslateElementInit()
+  }
+})
+</script>
+
 <template>
   <v-app-bar class="navbar" elevation="0">
     <v-container class="nav-container">
@@ -144,7 +180,7 @@
   display: none !important;
 }
 
-body {
+:global(body) {
   top: 0 !important;
 }
 
