@@ -349,8 +349,8 @@ const cleanInvalidKmzLayers = (layerGroup) => {
   })
 }
 
-const loadHistoricalKmz = () => {
-  if (!map.value) return Promise.resolve()
+const loadHistoricalKmz = async () => {
+  if (!map.value) return
 
   historicalLoadToken.value += 1
 
@@ -364,56 +364,67 @@ const loadHistoricalKmz = () => {
   historicalError.value = ''
   isHistoricalLoading.value = true
 
-  return new Promise((resolve) => {
-    const kmzLayer = L.kmzLayer()
+  try {
+    const response = await fetch(activeMap.file, {
+      cache: 'no-store',
+    })
 
-    const finishLoading = () => {
-      if (currentToken !== historicalLoadToken.value) {
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`)
+    }
+
+    const blob = await response.blob()
+    const blobUrl = URL.createObjectURL(blob)
+
+    await new Promise((resolve, reject) => {
+      const kmzLayer = L.kmzLayer()
+
+      const timeout = window.setTimeout(() => {
+        reject(new Error('Timeout la încărcarea KMZ'))
+      }, 30000)
+
+      kmzLayer.on('load', () => {
+        window.clearTimeout(timeout)
+
+        if (currentToken !== historicalLoadToken.value) {
+          URL.revokeObjectURL(blobUrl)
+          resolve()
+          return
+        }
+
+        cleanInvalidKmzLayers(kmzLayer)
+
+        historicalLayer.value = kmzLayer
+
+        kmzLayer.addTo(map.value)
+        kmzLayer.bringToFront()
+
+        markers.value.forEach((marker) => {
+          marker.setZIndexOffset(1000)
+        })
+
+        URL.revokeObjectURL(blobUrl)
         resolve()
-        return
-      }
-
-      cleanInvalidKmzLayers(kmzLayer)
-
-      historicalLayer.value = kmzLayer
-
-      kmzLayer.addTo(map.value)
-      kmzLayer.bringToFront()
-
-      markers.value.forEach((marker) => {
-        marker.setZIndexOffset(1000)
       })
 
-      isHistoricalLoading.value = false
-      resolve()
-    }
+      kmzLayer.on('error', () => {
+        window.clearTimeout(timeout)
+        URL.revokeObjectURL(blobUrl)
+        reject(new Error('Eroare la parsarea KMZ'))
+      })
 
-    const failLoading = () => {
-      if (currentToken !== historicalLoadToken.value) {
-        resolve()
-        return
-      }
-
-      isHistoricalLoading.value = false
+      kmzLayer.load(blobUrl)
+    })
+  } catch (error) {
+    if (currentToken === historicalLoadToken.value) {
       historicalError.value = `Nu s-a putut încărca harta din ${activeMap.year}.`
-      resolve()
+      console.error('[KMZ LOAD ERROR]', activeMap.file, error)
     }
-
-    kmzLayer.on('load', finishLoading)
-    kmzLayer.on('error', failLoading)
-
-    try {
-      kmzLayer.load(activeMap.file)
-    } catch {
-      failLoading()
+  } finally {
+    if (currentToken === historicalLoadToken.value) {
+      isHistoricalLoading.value = false
     }
-
-    window.setTimeout(() => {
-      if (isHistoricalLoading.value && currentToken === historicalLoadToken.value) {
-        failLoading()
-      }
-    }, 20000)
-  })
+  }
 }
 
 const removeHistoricalLayer = () => {
