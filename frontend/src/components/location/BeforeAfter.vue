@@ -103,7 +103,7 @@ const sliderValue = ref(50)
 .compare-wrapper {
   position: relative;
   width: 100%;
-  max-width: 650pxs;
+  max-width: 650px;
   margin: 0 auto;
 
   aspect-ratio: 1200 / 1400;
@@ -128,8 +128,11 @@ const sliderValue = ref(50)
 }
 
 .before-layer .compare-image {
-  width: 100%;
+  width: 650px;
+  height: 100%;
   max-width: none;
+  object-fit: cover;
+  object-position: center;
 }
 
 .divider {
