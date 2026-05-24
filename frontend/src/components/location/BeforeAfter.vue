@@ -128,11 +128,7 @@ const sliderValue = ref(50)
 }
 
 .before-layer .compare-image {
-  width: 650px;
-  height: 100%;
-  max-width: none;
-  object-fit: cover;
-  object-position: center;
+  width: min(650px, calc(100vw - 32px));
 }
 
 .divider {
