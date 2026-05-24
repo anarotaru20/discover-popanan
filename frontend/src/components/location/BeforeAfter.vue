@@ -162,7 +162,7 @@ const sliderValue = ref(50)
   inset: 0;
   z-index: 4;
   opacity: 0;
-  cursor: ew-resize;
+  /* cursor: ew-resize; */
 }
 
 .label {

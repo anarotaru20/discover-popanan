@@ -222,7 +222,7 @@ const initMap = () => {
 
   map.value = L.map(mapContainer.value, {
     zoomControl: false,
-    scrollWheelZoom: false,
+    scrollWheelZoom: true,
     maxZoom: 20,
     zoomAnimation: false,
     markerZoomAnimation: false,
