@@ -700,29 +700,29 @@ const loadContributions = async () => {
   try {
     await locationsStore.fetchLocations()
 
-    const loadedContributions = []
-
-    for (const location of locations.value) {
+    const requests = locations.value.map(async (location) => {
       await contributionsStore.fetchContributions(Number(location.id))
 
       const items = Array.isArray(contributionsStore.contributions)
         ? contributionsStore.contributions
         : []
 
-      loadedContributions.push(
-        ...items.map((item) => ({
-          ...item,
-          location_id: getContributionLocationId(item) || Number(location.id),
-        })),
-      )
-    }
-
-    allContributions.value = loadedContributions.sort((a, b) => {
-      const dateA = new Date(a.created_at || a.createdAt || 0)
-      const dateB = new Date(b.created_at || b.createdAt || 0)
-
-      return dateB - dateA
+      return items.map((item) => ({
+        ...item,
+        location_id: getContributionLocationId(item) || Number(location.id),
+      }))
     })
+
+    const results = await Promise.all(requests)
+
+    allContributions.value = results
+      .flat()
+      .sort((a, b) => {
+        const dateA = new Date(a.created_at || a.createdAt || 0)
+        const dateB = new Date(b.created_at || b.createdAt || 0)
+
+        return dateB - dateA
+      })
   } catch (err) {
     error.value = 'Nu am putut încărca toate contribuțiile.'
   } finally {
